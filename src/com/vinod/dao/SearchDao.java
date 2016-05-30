@@ -1033,7 +1033,12 @@ public class SearchDao {
 			ps.setInt(3, dId1);
 			ps.setInt(4, dId2);
 			
-			i = ps.executeUpdate();
+			rs = ps.executeQuery();
+			
+			while(rs.next())
+			{
+				i = rs.getInt(1);
+			}
 		}catch (SQLException e) {
 			
 			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();

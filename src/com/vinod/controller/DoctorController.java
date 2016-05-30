@@ -2,12 +2,17 @@ package com.vinod.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.Proxy;
+import java.net.URL;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -792,6 +797,8 @@ public class DoctorController extends HttpServlet {
 							String fileName = extractFileName(part);
 							if(fileName!=null)
 							{
+								
+								
 								filePath= SAVE_DIR+ File.separator + fileName;
 							}
 
@@ -802,7 +809,20 @@ public class DoctorController extends HttpServlet {
 					else
 					{
 						if(postType == 3){
+							
 							filePath = request.getParameter("videourl");
+							
+							String pattern = "(?<=watch\\?v=|/videos/|embed\\/|youtu.be\\/|\\/v\\/|\\/e\\/|watch\\?v%3D|watch\\?feature=player_embedded&v=|%2Fvideos%2F|embed%\u200C\u200B2F|youtu.be%2F|%2Fv%2F)[^#\\&\\?\\n]*";
+
+						    Pattern compiledPattern = Pattern.compile(pattern);
+						    Matcher matcher = compiledPattern.matcher(filePath);
+
+						    if(matcher.find()){
+						        String s =  matcher.group();
+						        filePath = "https://www.youtube.com/embed/"+s;
+						    }
+							
+							
 						}
 					}
 				}
