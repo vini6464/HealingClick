@@ -426,7 +426,8 @@ public class AppointmentController extends HttpServlet {
 						lService.saveLog(log1);
 						
 					}
-					
+					List<Doctor> doctors = lService.getAllDoctors(id);
+					request.setAttribute("doctors", doctors);
 					request.setAttribute("patient", patient);
 					target="patientPlanner.jsp";
 				}

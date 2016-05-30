@@ -7,6 +7,9 @@
   <session-config>
     <session-timeout>-1</session-timeout>
   </session-config>
+  <listener>
+    <listener-class>com.vinod.listener.Initialize</listener-class>
+</listener>
   <error-page>
     <error-code>404</error-code>
     <location>/home.jsp</location>

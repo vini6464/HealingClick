@@ -46,13 +46,13 @@ $( document ).ready(function() {
 		success : function(result) {
 			
 			
-			var d = $.parseJSON(result);
-			for ( var i = 0; i < d.length; i++) {
-				/* html = html + "<option value='"+d[i].name+"'>"+d[i].name+"</option>"; */	
+			symptomList = $.parseJSON(result);
+			/*for ( var i = 0; i < d.length; i++) {
+			 html = html + "<option value='"+d[i].name+"'>"+d[i].name+"</option>"; 
 				
 				symptomList.push('' + d[i].name);
 			}
-			/* $("#symptoms").html(html); */
+			 $("#symptoms").html(html); */
 			
 			$("#sym1").autocomplete({source: symptomList}); 
 			$("#dis1").autocomplete({source: symptomList}); 
@@ -79,13 +79,13 @@ $( document ).ready(function() {
 		datatype : 'json',
 		success : function(result) {
 			
-			var d = $.parseJSON(result);
-			for ( var i = 0; i < d.length; i++) {
-				/* html = html + "<option value='"+d[i].name+"'>"+d[i].name+"</option>"; */	
+			medList = $.parseJSON(result);
+			/* for ( var i = 0; i < d.length; i++) {
+			 html = html + "<option value='"+d[i].name+"'>"+d[i].name+"</option>"; 
 				
 				medList.push('' + d[i].name); 
 			}
-			/*  $("#medicines").html(html); */
+			  $("#medicines").html(html); */ 
 			
 			$("#med1").autocomplete({source: medList});
 			$("#med2").autocomplete({source: medList});
@@ -515,6 +515,8 @@ $( document ).ready(function() {
 							
 						</div>
 </form>
+
+<script src="js/bootstrap.min.js"></script>
 					</div>
 
 

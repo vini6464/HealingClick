@@ -3,29 +3,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ include file="patientHeader.jsp" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
 <link href='calendar/css/fullcalendar.css' rel='stylesheet' />
 <link href='calendar/css/fullcalendar.print.css' rel='stylesheet'
 	media='print' />
 <script src='calendar/lib/moment.min.js'></script>
-<link rel="stylesheet"
-	href="css/bootstrap.min.css">
+
 
 <script
 	src="js/bootstrap.min.js"></script>
 <script src='calendar/js/fullcalendar.js'></script>
-
+<script src="js/jquery-ui.min.js"></script>
+<link href="css/jquery-ui.min.css" rel="stylesheet">
 <script>
-function preventBackButton(){window.history.forward();}
-setTimeout("preventBackButton()", 0);
-window.onunload=function(){null};
-</script>
-<script>
-
+var symptomList=[];
 $( document ).ready(function() {
 	 var insert = "${insert}";
 		if(insert == 1)
@@ -38,13 +32,16 @@ $( document ).ready(function() {
 			url : 'symptoms.notification',
 			datatype : 'json',
 			success : function(result) {
-				var html = "";
+				symptomList = $.parseJSON(result);
+			
 				
-				var d = $.parseJSON(result);
-				for ( var i = 0; i < d.length; i++) {
-					html = html + "<option value='"+d[i].name+"'>"+d[i].name+"</option>";	
-				}
-				$("#symptoms").html(html);
+				$("#sym1").autocomplete({source: symptomList}); 
+				
+				$("#sym2").autocomplete({source: symptomList}); 
+				$("#sym3").autocomplete({source: symptomList}); 
+				$("#sym4").autocomplete({source: symptomList}); 
+				$("#sym5").autocomplete({source: symptomList}); 
+				
 			},
 			statusCode : {
 				500 : function(result) {
@@ -96,7 +93,8 @@ $(function() {
 });
 
 function removeSymptom(id){
-	$("#s"+id).html('<input name=s'+id+' list=symptoms ><input type=button class="pull-right" value=x onclick="removeSymptom('+id+');">');
+	$("#s"+id).html('<input name=s'+id+' id=sym'+id+' list=symptoms ><input type=button class="pull-right" value=x onclick="removeSymptom('+id+');">');
+	$("#sym"+id).autocomplete({source: symptomList}); 
 	$("#s"+id).hide();
 	if ($("#s1").is(":visible")) {
 		if ($("#s2").is(":visible")) {
@@ -372,6 +370,11 @@ function validateUTime() {
 
 	}
 </script>
+<style type="text/css">
+
+
+.ui-autocomplete { position: absolute; cursor: default;z-index:99999 !important; }
+</style>
 <script>
 
 $(document).ready(function() {
@@ -587,23 +590,23 @@ font-size:0.9em;
 									</td>
 									<td class="col-md-9">
 										<div id=s1 style="margin-top: 1%;">
-											<input name=s1 list=symptoms><input type=button
+											<input name=s1 id=sym1 list=symptoms><input type=button
 												class="pull-right" value=x onclick="removeSymptom(1);">
 										</div>
 										<div id=s2 style="margin-top: 1%;">
-											<input name=s2 list=symptoms><input type=button
+											<input name=s2 id=sym2 list=symptoms><input type=button
 												class="pull-right" value=x onclick="removeSymptom(2);">
 										</div>
 										<div id=s3 style="margin-top: 1%;">
-											<input name=s3 list=symptoms><input type=button
+											<input name=s3 id=sym3 list=symptoms><input type=button
 												class="pull-right" value=x onclick="removeSymptom(3);">
 										</div>
 										<div id=s4 style="margin-top: 1%;">
-											<input name=s4 list=symptoms><input type=button
+											<input name=s4 id=sym4 list=symptoms><input type=button
 												class="pull-right" value=x onclick="removeSymptom(4);">
 										</div>
 										<div id=s5 style="margin-top: 1%;">
-											<input name=s5 list=symptoms><input type=button
+											<input name=s5 id=sym5 list=symptoms><input type=button
 												class="pull-right" value=x onclick="removeSymptom(5);">
 										</div> <input type=button value=+ id=symptom>
 									</td>
@@ -706,23 +709,23 @@ font-size:0.9em;
 									</td>
 									<td class="col-md-9">
 										<div id=s1 style="margin-top: 1%;">
-											<input name=s1 list=symptoms><input type=button
+											<input name=s1 id=sym1 list=symptoms><input type=button
 												class="pull-right" value=x onclick="removeSymptom(1);">
 										</div>
 										<div id=s2 style="margin-top: 1%;">
-											<input name=s2 list=symptoms><input type=button
+											<input name=s2 id=sym2 list=symptoms><input type=button
 												class="pull-right" value=x onclick="removeSymptom(2);">
 										</div>
 										<div id=s3 style="margin-top: 1%;">
-											<input name=s3 list=symptoms><input type=button
+											<input name=s3 id=sym3 list=symptoms><input type=button
 												class="pull-right" value=x onclick="removeSymptom(3);">
 										</div>
 										<div id=s4 style="margin-top: 1%;">
-											<input name=s4 list=symptoms><input type=button
+											<input name=s4 id=sym4 list=symptoms><input type=button
 												class="pull-right" value=x onclick="removeSymptom(4);">
 										</div>
 										<div id=s5 style="margin-top: 1%;">
-											<input name=s5 list=symptoms><input type=button
+											<input name=s5 id=sym5 list=symptoms><input type=button
 												class="pull-right" value=x onclick="removeSymptom(5);">
 										</div> <input type=button value=+ id=symptom>
 									</td>

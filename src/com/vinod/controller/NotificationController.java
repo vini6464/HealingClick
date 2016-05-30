@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.vinod.service.CommunityService;
 import com.google.gson.Gson;
+import com.vinod.listener.Initialize;
 import com.vinod.model.Comment;
 import com.vinod.model.Doctor;
 import com.vinod.model.ForumPost;
@@ -86,8 +87,6 @@ public class NotificationController extends HttpServlet {
 			String msg = "";
 				try {
 					
-					
-					
 					Login login=(Login) request.getSession().getAttribute("login");
 					int id=login.getId();
 					if(login.getType() == 4)
@@ -110,6 +109,7 @@ public class NotificationController extends HttpServlet {
 					
 					pw.print(msg);
 				} catch (Exception e) {
+					
 					pw.print(msg);
 				}
 				
@@ -1017,19 +1017,9 @@ public class NotificationController extends HttpServlet {
 				Login login=(Login) request.getSession().getAttribute("login");
 				lService.setLastActive(login);
 				
-				String symptomsList =  (String) request.getSession().getAttribute("symptoms");
+				String symptomsList = (String) this.getServletContext().getAttribute("symptoms");
 				
-				if(null == symptomsList){  
 				
-				List<Symptom> symptoms = dService.getAllSymptoms();
-				// create a new Gson instance
-				Gson gson = new Gson();
-				// convert your list to json
-				symptomsList = gson.toJson(symptoms);
-				HttpSession session = request.getSession();
-				session.setAttribute("symptoms", symptomsList);
-				
-				}
 				
                
 				PrintWriter pw = response.getWriter();
@@ -1049,22 +1039,9 @@ public class NotificationController extends HttpServlet {
 				Login login=(Login) request.getSession().getAttribute("login");
 				lService.setLastActive(login);
 				int id=login.getId();
-				String medicinesList =  (String) request.getSession().getAttribute("medicines");
-				
-				if(null == medicinesList){  
-					List<Medicine> medicines = dService.getAllMedicines();
-					
-					// create a new Gson instance
-					Gson gson = new Gson();
-					// convert your list to json
-				    medicinesList = gson.toJson(medicines);
-					HttpSession session = request.getSession();
-					session.setAttribute("medicines", medicinesList);
-					
-					}
+				String medicinesList =  (String) this.getServletContext().getAttribute("medicines");
 				
 				
-               
 				PrintWriter pw = response.getWriter();
 
 				pw.print(medicinesList);	
