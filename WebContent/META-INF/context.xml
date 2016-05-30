@@ -1,0 +1,21 @@
+<Context>
+
+<Resource name="jdbc/practice"
+
+auth="Container"
+
+type="javax.sql.DataSource"
+
+username="root"
+
+password="healingclick"
+
+driverClassName="com.mysql.jdbc.Driver"
+
+url="jdbc:mysql://103.251.25.84:3306/practice"
+
+maxActive="15"
+
+maxIdle="3"/>
+
+</Context>

@@ -1,0 +1,360 @@
+.chat-box
+            {
+                width: 300px;
+            }
+
+
+.glyphicon.glyphicon-one-fine-dot {
+    margin-bottom: ;
+    overflow: hidden;
+}
+.glyphicon.glyphicon-one-fine-dot:before {
+    content:"\25cf";
+    font-size: 1.6em;
+}
+
+
+           /*  .header
+            {
+                padding: 10px;
+                color: white;
+                font-size: 14px;
+                font-weight: bold;
+                background-color: #6d84b4;
+            } */
+
+            .messages
+            {
+                padding: 10px;
+                height: 200px;
+               
+                background-color: rgba(249,249,249, 0.8);
+                border-width: 2px;
+                border-color: #00b9bc;
+                border-style: solid;
+                overflow-y: scroll;
+                
+            }
+
+            .messages ul
+            {
+                padding: 0px;
+                list-style-type: none;
+            }
+
+            .messages ul li
+            {
+                height: auto;
+                margin-bottom: 10px;
+                clear: both;
+                padding-left: 10px;
+                padding-right: 10px;
+              
+            }
+
+            .messages ul li span
+            {
+                display: inline-block;
+                max-width: 200px;
+                background-color: white;
+                padding: 5px;
+                border-radius: 4px;
+                position: relative;
+                border-width: 1px;
+                border-style: solid;
+                border-color: transparent;
+                 border-radius:15px;
+            }
+
+            .messages ul li span.left
+            {
+                float: left;
+            }
+
+            .messages ul li span.left:after
+            {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                left: -8.5px;
+                top: 7px;
+                height: 0px;
+                width: 0px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-right: 8px solid white;
+            }
+
+            .messages ul li span.left:before
+            {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                left: -9px;
+                top: 7px;
+                height: 0px;
+                width: 0px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-right: 8px solid transparent;
+            }
+
+            .messages ul li span.right:after
+            {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                right: -8px;
+                top: 6px;
+                height: 0px;
+                width: 0px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid transparent;
+            }
+
+            .messages ul li span.right:before
+            {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                right: -9px;
+                top: 6px;
+                height: 0px;
+                width: 0px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid #eeeeee;
+            }
+
+            .messages ul li span.right
+            {
+                float: right;
+                background-color:#eeeeee;
+            }
+
+            .clear
+            {
+                clear: both;
+            }
+
+            .input-box
+            {
+                background-color: white;
+                height: 50px;
+                padding: 0px;
+            }
+
+            .input-box textarea
+            {
+                padding: 0px;
+                width: 298px;
+                height: 100%;
+                display: inline-block;
+                outline: 0px;
+               
+                resize: none;
+                border-width: 2px;
+                border-color: #00b9bc;
+                border-style: solid;
+                font-size: 12px;
+                padding: 10px;
+                border-top-width: 0px;
+            }
+            
+            .input-box button
+            {
+            	padding: 0px;
+                width: 278px;
+                height: 100%;
+                display: inline-block;
+                outline: 0px;
+                border-width: 0px;
+                resize: none;
+                border-width: 1px;
+                border-color: black;
+                border-style: solid;
+                font-size: 12px;
+                padding: 10px;
+                border-top-width: 0px;
+            
+            
+            }
+
+
+body {
+	height: 3000px
+}
+
+.chat-box {
+	font-size:14px;
+	color: #333;
+	width: 200px; /* Chatbox width */
+	border: 2px solid #00B9BC;
+	border-bottom: none;
+	background-color: white;
+	position: fixed;
+	right: 10px;
+	bottom: 0;
+	z-index: 9999;
+	-webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
+}
+
+.chat-box>input[type="checkbox"] {
+	display: block;
+	margin: 0 0;
+	padding: 0 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	width: 100%;
+	height: 26px;
+	z-index: 999;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+}
+
+.chat-box>label {
+	display: block;
+	height: 24px;
+	line-height: 24px;
+	background-color: #00B9BC;
+	color: white;
+	font-weight: bold;
+	padding: 0 1em 1px;
+}
+
+.chat-box>label:before {
+	content: attr(data-collapsed)
+}
+
+.chat-box .chat-box-content {
+	padding: 10px;
+	display: none;
+}
+
+/* hover state */
+.chat-box>input[type="checkbox"]:hover+label {
+	background-color: #00B9BC;
+}
+
+/* checked state */
+.chat-box>input[type="checkbox"]:checked+label {
+    background-color: #00B9BC;
+}
+
+.chat-box>input[type="checkbox"]:checked+label:before {
+	content: attr(data-expanded)
+}
+
+.chat-box>input[type="checkbox"]:checked  ~ .chat-box-content {
+	display: block
+}
+
+@media only screen and (max-width : 540px) {
+	.chat-sidebar {
+		display: none !important;
+	}
+	.chat-popup {
+		display: none !important;
+	}
+}
+
+body {
+	background-color: #e9eaed;
+}
+
+.chat-sidebar {
+	width: 205px;
+	position: fixed;
+	height: 100%;
+	right: 0px;
+	top: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: 1px solid rgba(29, 49, 91, .3);
+}
+
+.sidebar-name {
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 4px;
+	font-size: 12px;
+}
+
+.sidebar-name span {
+	padding-left: 5px;
+}
+
+.sidebar-name a {
+	display: block;
+	height: 100%;
+	text-decoration: none;
+	color: inherit;
+}
+
+.sidebar-name:hover {
+	background-color:#f4f4f4;
+}
+
+.sidebar-name img {
+	width: 32px;
+	height: 32px;
+	vertical-align: middle;
+}
+
+.popup-box {
+	display: none;
+	position: fixed;
+	bottom: 0px;
+	right: 220px;
+	height: 285px;
+	background-color: rgb(237, 239, 244);
+	width: 300px;
+	border: 1px solid rgba(29, 49, 91, .3);
+	z-index: 9999;
+}
+
+.popup-box .popup-head {
+	background-color: #00B9BC;
+	padding: 5px;
+	color: white;
+	font-weight: bold;
+	font-size: 14px;
+	clear: both;
+}
+
+.popup-box .popup-head .popup-head-left {
+	float: left;
+}
+
+.popup-box .popup-head .popup-head-right {
+	float: right;
+	opacity: 0.5;
+}
+
+.popup-box .popup-head .popup-head-right a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.popup-box .popup-messages {
+	height: 100%;
+	overflow-y: scroll;
+}
+
+.popup-head-left .glyphicon-one-fine-dot{
+	position:relative;
+	top:-5px;
+}
+
+.list-group-item .glyphicon-one-fine-dot{
+
+    position: relative;
+    top: -6px;
+    left: -1px;
+}
