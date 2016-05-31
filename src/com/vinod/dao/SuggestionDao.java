@@ -121,7 +121,8 @@ public class SuggestionDao {
 				comment.setComment(rs.getString("comment"));
 				comment.setCreated(rs.getTimestamp("commentedon"));
 				comment.setId(rs.getInt("commentid"));
-				
+				comment.setFees(rs.getInt("fees"));
+				comment.setTransactionId(rs.getString("transactionid"));
 				comments.add(comment);
 			}
 		} 
@@ -137,13 +138,13 @@ public class SuggestionDao {
 		return comments;
 	}
 
-	public void saveDoctorSuggestionComment(int postId, int id, String parameter) throws DaoException {
+	public void saveDoctorSuggestionComment(int postId, int id, String parameter, int fees) throws DaoException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		
-		String query = "insert into suggestioncomment(commentid,suggestionid,doctorid,comment,commentedon) values(0,?,?,?,?)";
+		String query = "insert into suggestioncomment(commentid,suggestionid,doctorid,comment,commentedon,fees) values(0,?,?,?,?,?)";
 		
 		try {
 			con = DBUtil.getConnection();
@@ -152,6 +153,7 @@ public class SuggestionDao {
 			ps.setInt(2, id);
 			ps.setString(3, parameter);
 			ps.setTimestamp(4, new Timestamp(new Date().getTime()));
+			ps.setInt(5, fees);
 			ps.executeUpdate();
 			
 					} 
@@ -330,6 +332,37 @@ public class SuggestionDao {
 			DBUtil.releaseResource(ps);
 			DBUtil.releaseResource(con);
 		}
+	}
+
+	public int saveSuggestionCommentPayment(int postId, int commentId, String txnId) throws DaoException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int i= 0;
+		
+		String query = "update suggestioncomment set transactionid=? where suggestionid=? and commentid=?";
+		
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(query);
+			ps.setString(1, txnId);
+			ps.setInt(2, postId);
+			ps.setInt(3, commentId);
+			i=ps.executeUpdate();
+			
+			
+			
+		} 
+		 catch (SQLException e) {
+			
+			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+		}finally
+		{
+			DBUtil.releaseResource(rs);
+			DBUtil.releaseResource(ps);
+			DBUtil.releaseResource(con);
+		}
+		return i;
 	}
 
 }

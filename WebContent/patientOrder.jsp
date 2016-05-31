@@ -394,6 +394,7 @@ function removeMedicine(id){
 								</div>
 							</div>
 						</form>
+						<script src="js/bootstrap.min.js"></script>
 					</div>
  <%@ include file="patientAside.jsp" %>
 					

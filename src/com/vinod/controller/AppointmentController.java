@@ -412,8 +412,9 @@ public class AppointmentController extends HttpServlet {
 
 					if(doctorId>0)
 					{
-						String content = "<a href='appointment.doctor'> Patient:"+patient.getFirstName()+"&nbsp; "+patient.getLastName()+" Has Made Request for Appointment</a>";
+						String content = "<a href='appointment.doctor'> "+patient.getFirstName()+"&nbsp; "+patient.getLastName()+" Has Made Request for Appointment</a>";
 						Notification notification = new Notification(0, id, content, doctorId, 0,1);
+						notification.setImage(patient.getImage());
 						lService.saveNotification(notification);
 						
 						String contentlog = "Requested for Appointment with Doctor Id="+doctorId+"and eventId="+eventId;

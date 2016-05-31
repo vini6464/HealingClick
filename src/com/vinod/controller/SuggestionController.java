@@ -84,6 +84,148 @@ public class SuggestionController extends HttpServlet {
 			return;
 
 		}
+		
+		
+		if(uri.endsWith("success.suggestion"))
+		{
+			try {
+				Login login=(Login) request.getSession().getAttribute("login");
+				int id=login.getId();
+
+					int postId = Integer.parseInt(request.getParameter("id"));
+					int commentId = Integer.parseInt(request.getParameter("cId"));
+					String txnId = request.getParameter("tId");
+					
+					int i = service.saveSuggestionCommentPayment(postId,commentId,txnId);
+					
+					Suggestion post = service.getSuggestionById(postId);
+
+					if(post.getId() == 0)
+					{
+						target = lService.setErrorControl(request,target,login1);
+						request.setAttribute("error", "This Suggestion doesnot exist");
+					}
+					else
+					{
+
+						if(post.getPatientId() !=  id)
+						{
+							target = lService.setErrorControl(request,target,login1);
+							request.setAttribute("error", "You can't view this Suggestion");
+						}
+						else
+						{
+							Patient patient = lService.getPatientById(id);
+							post.setPatientName(patient.getFirstName()+" "+patient.getLastName());
+							Doctor doctor = lService.getDoctorById(post.getDoctorId());
+							post.setDoctorName(doctor.getFirstName()+" "+doctor.getLastName());
+							List<Comment> comments = service.getAllCommentsBySuggestionId(post.getId());
+							for(int j=0;j<comments.size();j++)
+							{
+								if(comments.get(j).getDoctorId()!=0)
+								{
+									comments.get(j).setDoctorName(doctor.getFirstName()+" "+doctor.getLastName());
+								}
+								if(comments.get(j).getPatientId()!=0)
+								{
+									comments.get(j).setPatientName(patient.getFirstName()+" "+patient.getLastName());
+								}
+
+							}
+							post.setComment(comments);
+							post.setComments(comments.size());
+
+							request.setAttribute("error", "Payment is Successfull");
+							request.setAttribute("insert", 1);
+							request.setAttribute("patient", patient);
+							request.setAttribute("post", post);
+							target="patientViewSuggestion.jsp";
+						}
+					}
+				
+
+			} catch (Exception e) {
+
+				try {
+					target = lService.setErrorControl(request,target,login1);
+					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
+				} catch (Exception e1) {
+
+					request.setAttribute("error", "Please Login To Continue.");
+					target="home.jsp";
+				}
+			}
+			request.getRequestDispatcher(target).forward(request, response);
+		}
+		
+		
+		if(uri.endsWith("fail.suggestion"))
+		{
+			try {
+				Login login=(Login) request.getSession().getAttribute("login");
+				int id=login.getId();
+
+					int postId = Integer.parseInt(request.getParameter("id"));
+					Suggestion post = service.getSuggestionById(postId);
+
+					if(post.getId() == 0)
+					{
+						target = lService.setErrorControl(request,target,login1);
+						request.setAttribute("error", "This Suggestion doesnot exist");
+					}
+					else
+					{
+
+						if(post.getPatientId() !=  id)
+						{
+							target = lService.setErrorControl(request,target,login1);
+							request.setAttribute("error", "You can't view this Suggestion");
+						}
+						else
+						{
+							Patient patient = lService.getPatientById(id);
+							post.setPatientName(patient.getFirstName()+" "+patient.getLastName());
+							Doctor doctor = lService.getDoctorById(post.getDoctorId());
+							post.setDoctorName(doctor.getFirstName()+" "+doctor.getLastName());
+							List<Comment> comments = service.getAllCommentsBySuggestionId(post.getId());
+							for(int j=0;j<comments.size();j++)
+							{
+								if(comments.get(j).getDoctorId()!=0)
+								{
+									comments.get(j).setDoctorName(doctor.getFirstName()+" "+doctor.getLastName());
+								}
+								if(comments.get(j).getPatientId()!=0)
+								{
+									comments.get(j).setPatientName(patient.getFirstName()+" "+patient.getLastName());
+								}
+
+							}
+							post.setComment(comments);
+							post.setComments(comments.size());
+
+
+							request.setAttribute("error", "Payment Failed");
+							request.setAttribute("patient", patient);
+							request.setAttribute("post", post);
+							target="patientViewSuggestion.jsp";
+						}
+					}
+				
+
+			} catch (Exception e) {
+
+				try {
+					target = lService.setErrorControl(request,target,login1);
+					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
+				} catch (Exception e1) {
+
+					request.setAttribute("error", "Please Login To Continue.");
+					target="home.jsp";
+				}
+			}
+			request.getRequestDispatcher(target).forward(request, response);
+		}
+		
 
 		if(uri.endsWith("createSuggestion.suggestion"))
 		{
@@ -312,7 +454,8 @@ public class SuggestionController extends HttpServlet {
 				{
 
 					int postId = Integer.parseInt(request.getParameter("id"));
-					service.saveDoctorSuggestionComment(postId,id,request.getParameter("comment"));
+					int fees = Integer.parseInt(request.getParameter("fees"));
+					service.saveDoctorSuggestionComment(postId,id,request.getParameter("comment"),fees);
 					Suggestion post = service.getSuggestionById(postId);
 					if(post.getId() == 0)
 					{
@@ -348,7 +491,7 @@ public class SuggestionController extends HttpServlet {
 
 						String content1 = "<a href='getSuggestion.suggestion?id="+postId+" '>Dr."+post.getDoctorName()+" Has Replied for Suggestion </a>";
 						Notification notification = new Notification(0, id, content1,post.getPatientId() , 0,2);
-						notification.setImage(patient.getImage());
+						notification.setImage(doctor.getImage());
 						lService.saveNotification(notification);
 
 						request.setAttribute("doctor", doctor);
@@ -394,7 +537,7 @@ public class SuggestionController extends HttpServlet {
 
 						String content1 = "<a href='getSuggestion.suggestion?id="+postId+" '>"+post.getPatientName()+" Has Replied for Suggestion </a>";
 						Notification notification = new Notification(0, id, content1,post.getDoctorId() , 0,1);
-						notification.setImage(doctor.getImage());
+						notification.setImage(patient.getImage());
 						lService.saveNotification(notification);
 
 						request.setAttribute("patient", patient);
@@ -473,6 +616,7 @@ public class SuggestionController extends HttpServlet {
 				post.setPatientName(patient.getFirstName()+" "+patient.getLastName());
 
 				Doctor doctor = lService.getDoctorById(doctorId);
+				post.setDoctorName(doctor.getFirstName()+" "+doctor.getLastName());
 				String content1 = "<a href='getSuggestion.suggestion?id="+postId+" '>"+post.getPatientName()+" Has Asked for Suggestion </a>";
 				Notification notification = new Notification(0, id, content1,doctorId , 0,1);
 				notification.setImage(patient.getImage());

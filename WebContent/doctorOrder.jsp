@@ -405,6 +405,7 @@ function getCost(id)
 								</div>
 							</div>
 						</form>
+						<script src="js/bootstrap.min.js"></script>
 					</div>
 					<%@ include file="doctorAside.jsp" %>
 				</div>

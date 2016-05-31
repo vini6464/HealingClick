@@ -18,9 +18,24 @@ public class Comment {
 	String image;
 	int otherId;
 	
+	int fees;
+	String transactionId;
 	
 	
 	
+	
+	public int getFees() {
+		return fees;
+	}
+	public void setFees(int fees) {
+		this.fees = fees;
+	}
+	public String getTransactionId() {
+		return transactionId;
+	}
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
+	}
 	public String getImage() {
 		return image;
 	}

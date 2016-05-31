@@ -293,7 +293,7 @@ public class NotificationController extends HttpServlet {
 						     String randomUUIDString = uuid.toString();
 						    
 						     service.setResetPassword(id , randomUUIDString ,type);
-						     String message="http://localhost:8080/HealingClick/resetPasswordLink.notification?id="+randomUUIDString;
+						     String message="Hi  Click this below link to change your password . http://healingclick.com/resetPasswordLink.notification?id="+randomUUIDString;
 							 service.sendResetLink(email, message);
 							 msg=3;
 						 }

@@ -55,28 +55,12 @@
 		  </div>
 				</div>
 			</div>
-			<c:forEach var="comment" items="${post.comment}">
-			<div class="row clearfix getpost_commentby">
-	    
-		<div class="col-xs-12 col-sm-12 col-md-12 column-active">
-			<h5 class="post_by">
-			
-			<c:if test="${comment.patientId ne 0}">
-				<a href="doctorViewPatient.profile?id=${comment.patientId}" style="text-decoration:none;">${comment.patientName}</a> <small>&nbsp;&nbsp;&nbsp;&nbsp;Commented As&nbsp;&nbsp;&nbsp;&nbsp; </small> ${comment.comment}</c:if>
-				<c:if test="${comment.doctorId ne 0}">
-				Dr . ${comment.doctorName}<small>&nbsp;&nbsp;&nbsp;&nbsp;Commented As&nbsp;&nbsp;&nbsp;&nbsp; </small> ${comment.comment}</c:if>
-				</h5>
-				<hr class="getpost-hr">
-				
-			
-		</div>	
-		</div>
-		</c:forEach>
-		<form action="saveComment.suggestion?id=${post.id}" method="post">
+			<form action="saveComment.suggestion?id=${post.id}" method="post">
 		<div class="row clearfix getpost_writecomment">
 		<div class="col-md-9 column">
 		<div class="form-group">
 					 <label for="exampleInputPassword1">Write Your Comment:</label><textarea rows="3" cols="10" class="form-control" id="exampleInputPassword1" name="comment" required></textarea>
+					  <label for="exampleInputPassword1">Fees : </label><input type="number" class="form-control" id="exampleInputPassword1" name=fees value=0 required/>
 				</div>
 				
 					 <input type="submit" class="btn btn-xs writepost_button" style="width:100px;" value="Submit">
@@ -88,6 +72,41 @@
 		</div>
 	</div>
 	</form>
+	
+	<hr class="getpost-hr">
+			<c:forEach var="comment" items="${post.comment}">
+			<div class="row clearfix getpost_commentby">
+	    
+		<div class="col-xs-12 col-sm-12 col-md-12 column-active">
+			<h5 class="post_by">
+			
+			<c:if test="${comment.patientId ne 0}">
+				<a href="doctorViewPatient.profile?id=${comment.patientId}" style="text-decoration:none;">${comment.patientName}</a> <small>&nbsp;&nbsp;&nbsp;&nbsp;Commented As&nbsp;&nbsp;&nbsp;&nbsp; </small> ${comment.comment}</c:if>
+				<c:if test="${comment.doctorId ne 0}">
+				Dr . ${comment.doctorName}<small>&nbsp;&nbsp;&nbsp;&nbsp;Commented As&nbsp;&nbsp;&nbsp;&nbsp; </small> ${comment.comment}
+				<c:if test="${comment.fees eq 0}">
+				(No Fees expected)
+				</c:if>
+				
+				<c:if test="${comment.fees ne 0}">
+					<c:if test="${not empty comment.transactionId}">
+				    (${comment.fees}.Rs has been paid as fees)
+					</c:if>
+					
+					<c:if test="${empty comment.transactionId}">
+				    (${comment.fees}.Rs has not been paid as fees. So comment will not be visible to patient)
+					</c:if>
+					
+					</c:if>
+				</c:if>
+				</h5>
+				<hr class="getpost-hr">
+				
+			
+		</div>	
+		</div>
+		</c:forEach>
+		
 	</div>
 </div>
 	

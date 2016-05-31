@@ -116,16 +116,12 @@ window.onunload=function(){null};
 						</div>
 				</div>
 				</form>
+				<script src="js/bootstrap.min.js"></script>
 			</div>     
 
 <%@ include file="pharmacyAside.jsp" %>
 			</div>
 
-
-
-
-
-			<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
 

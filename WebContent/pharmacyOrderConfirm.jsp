@@ -339,7 +339,7 @@ function submitPayuForm() {
 							</c:if>
 							
 						</div>
-
+<script src="js/bootstrap.min.js"></script>
 					</div>
 <%@ include file="pharmacyAside.jsp" %>
 			</div>
@@ -349,7 +349,7 @@ function submitPayuForm() {
 
 
 
-			<script src="js/bootstrap.min.js"></script>
+			
 </body>
 </html>
 

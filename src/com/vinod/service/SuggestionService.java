@@ -36,8 +36,8 @@ public class SuggestionService {
 
 	
 
-	public void saveDoctorSuggestionComment(int postId, int id, String parameter) throws DaoException {
-		dao.saveDoctorSuggestionComment(postId,id,parameter);
+	public void saveDoctorSuggestionComment(int postId, int id, String parameter, int fees) throws DaoException {
+		dao.saveDoctorSuggestionComment(postId,id,parameter,fees);
 		
 	}
 
@@ -65,6 +65,14 @@ public class SuggestionService {
 
 	public void closeNotification(int postId, Login login) throws DaoException {
 		dao.closeNotification(postId,login);
+		
+	}
+
+	public int saveSuggestionCommentPayment(int postId, int commentId, String txnId) throws DaoException {
+		
+		int i = dao.saveSuggestionCommentPayment(postId,commentId,txnId);
+		return i;
+		
 		
 	}
 

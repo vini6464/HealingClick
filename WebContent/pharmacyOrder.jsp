@@ -411,7 +411,7 @@ function removeMedicine(id){
 						</form>
 					</div>
 
-
+<script src="js/bootstrap.min.js"></script>
 
  <%@ include file="pharmacyAside.jsp" %>
 			</div>
