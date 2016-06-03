@@ -158,7 +158,6 @@ public class ChatDao {
 			DBUtil.releaseResource(ps);
 			DBUtil.releaseResource(con);
 		}
-
 		return messages;
 	}
 
@@ -428,20 +427,30 @@ public class ChatDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String query = "select DISTINCT conversation.cid , conversation.patient , conversation.doctor ,conversation.pharmacy , conversation.otherdoctor , conversation.otherpharmacy , conversation.otherpatient"
-						+" from conversation , conversation_reply , patient , doctor , pharmacy "
-						+" where conversation.cid =conversation_reply.cid and conversation_reply.isread=0 and ";
+		String query = "";
 		
 		if(login.getType() == 1)
     	{
+		   query = "select DISTINCT conversation.cid , conversation.patient , conversation.doctor ,conversation.pharmacy , conversation.otherdoctor , conversation.otherpharmacy , conversation.otherpatient"
+					+" from conversation , conversation_reply , doctor  "
+					+" where conversation.cid =conversation_reply.cid and conversation_reply.isread=0 and ";
+			
     		query = query + "(doctor.id=conversation.doctor  or  doctor.id=conversation.otherdoctor) and  (doctor.id=?) and(doctor.id <> conversation_reply.replier_id)";
     	}
     	if(login.getType() == 2)
     	{
+    		
+    	   query = "select DISTINCT conversation.cid , conversation.patient , conversation.doctor ,conversation.pharmacy , conversation.otherdoctor , conversation.otherpharmacy , conversation.otherpatient"
+					+" from conversation , conversation_reply , patient  "
+					+" where conversation.cid =conversation_reply.cid and conversation_reply.isread=0 and ";
     		query = query +" patient.id=conversation.patient and  patient.id=? and patient.id <> conversation_reply.replier_id";
     	}
     	if(login.getType() == 3)
     	{
+    	   query = "select DISTINCT conversation.cid , conversation.patient , conversation.doctor ,conversation.pharmacy , conversation.otherdoctor , conversation.otherpharmacy , conversation.otherpatient"
+					+" from conversation , conversation_reply , pharmacy "
+					+" where conversation.cid =conversation_reply.cid and conversation_reply.isread=0 and ";
+    		
     		query = query +" (pharmacy.id=conversation.pharmacy or pharmacy.id=conversation.otherpharmacy) and  pharmacy.id=? and(pharmacy.id <> conversation_reply.replier_id)";
     	}
 		
@@ -466,7 +475,7 @@ public class ChatDao {
 				chats.add(chat);
 			}
 		} catch (SQLException e) {
-			
+			e.printStackTrace();
 			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
 		}finally
 		{
