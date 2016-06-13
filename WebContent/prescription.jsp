@@ -16,25 +16,51 @@
 <script src="js/dropzone.js" type="text/javascript"></script>
 <link href="css/dropzone.css" rel="stylesheet">
 <link href="css/basic.css" rel="stylesheet">
-<script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>	
-<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
-<link href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="datatable/jquery.dataTables.css" rel="stylesheet">
+<link href="datatable/dataTables.tableTools.css" rel="stylesheet">
+<script src="datatable/jquery.js" type="text/javascript"></script>
+<script src="datatable/jquery.dataTables.js" type="text/javascript"></script>
+<script src="datatable/dataTables.tableTools.js" type="text/javascript"></script>
+
+
 <style>
   body{font-family: 'Josefin Sans', sans-serif;}
-  .admin_nav{background-color:white;}
-   .admin_prescriptions{padding:10px;}
+   .admin_users{padding:10px;}
+    .admin_nav{background-color:white;}
 </style>
 <script type="text/javascript">
+
 $(document).ready(function() {
-	$('#example').DataTable();
-	  /* $('#example').DataTable( {
-	        "pagingType": "full_numbers",
-	        "ordering": false,
-	        'iDisplayLength': 2,
-	        "bLengthChange": false,
-	        "bFilter": true,
-	    } );  */
+    $('#example').DataTable( {
+        dom: 'T<"clear">lfrtip',
+        tableTools: {
+            "sSwfPath": "datatable/copy_csv_xls_pdf.swf",
+            "aButtons": [
+          				{
+          					"sExtends": "copy",
+          					"sTitle": "Prescriptions"
+          				},
+          				{
+          					"sExtends": "csv",
+          					"sTitle": "Prescriptions"
+          				},
+          				{
+          					"sExtends": "xls",
+          					"sTitle": "Prescriptions"
+          				},
+          				{
+          					"sExtends": "pdf",
+          					"sTitle": "Prescriptions"
+          				},
+          				{
+          					"sExtends": "print",
+          					"sTitle": "Prescriptions"
+          				}
+          			]
+            
+        }
+    } );
+    
 } );
 </script>
 </head>

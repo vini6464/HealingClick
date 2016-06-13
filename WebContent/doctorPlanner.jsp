@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="css/bootstrap.min.css" rel="stylesheet">
 
 <link href='calendar/css/fullcalendar.css' rel='stylesheet' />
 <link href='calendar/css/fullcalendar.print.css' rel='stylesheet'

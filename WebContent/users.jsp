@@ -13,13 +13,13 @@
 <link rel="icon" type="image" href="image/healingclick_icon.png" />
 <link href="css/style.css" rel="stylesheet">
 <script type="text/javascript" src="js/ajax.js"></script>
-<script src="js/dropzone.js" type="text/javascript"></script>
-<link href="css/dropzone.css" rel="stylesheet">
 <link href="css/basic.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
-<script src="js/jquery.js" type="text/javascript"></script>	
-<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>	
-<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+
+<link href="datatable/jquery.dataTables.css" rel="stylesheet">
+<link href="datatable/dataTables.tableTools.css" rel="stylesheet">
+<script src="datatable/jquery.js" type="text/javascript"></script>
+<script src="datatable/jquery.dataTables.js" type="text/javascript"></script>
+<script src="datatable/dataTables.tableTools.js" type="text/javascript"></script>
 
 
 <style>
@@ -28,16 +28,41 @@
     .admin_nav{background-color:white;}
 </style>
 <script type="text/javascript">
+
 $(document).ready(function() {
-	$('#example').DataTable();
-	  /* $('#example').DataTable( {
-	        "pagingType": "full_numbers",
-	        "ordering": false,
-	        'iDisplayLength': 2,
-	        "bLengthChange": false,
-	        "bFilter": true,
-	    } );  */
+    $('#example').DataTable( {
+        dom: 'T<"clear">lfrtip',
+        tableTools: {
+            "sSwfPath": "datatable/copy_csv_xls_pdf.swf",
+            "aButtons": [
+         				{
+         					"sExtends": "copy",
+         					"sTitle": "Users"
+         				},
+         				{
+         					"sExtends": "csv",
+         					"sTitle": "Users"
+         				},
+         				{
+         					"sExtends": "xls",
+         					"sTitle": "Users"
+         				},
+         				{
+         					"sExtends": "pdf",
+         					"sTitle": "Users"
+         				},
+         				{
+         					"sExtends": "print",
+         					"sTitle": "Users"
+         				}
+         			]
+              
+        }
+        
+    } );
+    
 } );
+
 
 
 function searchOrder()
@@ -170,10 +195,10 @@ function searchOrder()
                 <td>${user.id}</td>
                
                 <td><c:if test="${type == 2}">
-					<a href="getPatient.admin?id=${user.id}">${user.firstName} &nbsp; ${user.lastName}</a> 
+					<a href="getPatient.admin?id=${user.id}">${user.firstName}  ${user.lastName}</a> 
 				</c:if>
 												<c:if test="${type == 1}">
-					<a href="getDoctor.admin?id=${user.id}">Dr.${user.firstName} &nbsp; ${user.lastName}</a> 
+					<a href="getDoctor.admin?id=${user.id}">Dr.${user.firstName}  ${user.lastName}</a> 
 				</c:if>
 												<c:if test="${type == 3}">
 					<a href="getPharmacy.admin?id=${user.id}">${user.pharmacyName}</a>
