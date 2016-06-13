@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.vinod.model.Appointment;
 import com.vinod.model.Disease;
 import com.vinod.model.Doctor;
 import com.vinod.model.Log;
@@ -31,6 +32,7 @@ import com.vinod.model.Prescription;
 import com.vinod.model.Symptom;
 import com.vinod.model.Vaccination;
 import com.vinod.service.AlertService;
+import com.vinod.service.AppointmentService;
 import com.vinod.service.DoctorService;
 import com.vinod.service.LoginService;
 import com.vinod.service.OrderService;
@@ -129,6 +131,23 @@ public class PatientController extends HttpServlet {
 
 				
 				request.setAttribute("patient", patient);
+				
+				String event = request.getParameter("eId");
+				if(event!=null  && !event.isEmpty()){
+					
+					
+					int eventId = Integer.parseInt(event);
+
+					AppointmentService aService = new AppointmentService();
+					Appointment appointment = aService.getEventById(eventId);
+
+					if(appointment.getPatientId() == patient.getId())
+					{
+						request.setAttribute("event", event);
+						
+					}	
+				}
+				
 				target="patientPlanner.jsp";
 
 

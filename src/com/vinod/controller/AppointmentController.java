@@ -134,7 +134,7 @@ public class AppointmentController extends HttpServlet {
 					Log log1 = new Log(dId,1,contentlog1 );
 					lService.saveLog(log1);
 					
-					String content = "<a href='appointment.doctor'> "+patient.getFirstName()+"&nbsp; "+patient.getLastName()+" Has Made Request for Appointment</a>";
+					String content = "<a href='appointment.doctor?eId="+eventId+"'>"+patient.getFirstName()+"&nbsp; "+patient.getLastName()+" Has Made Request for Appointment</a>";
 					Notification notification = new Notification(0, pId, content, dId, 0,1);
 					notification.setImage(patient.getImage());
 					lService.saveNotification(notification);
@@ -153,7 +153,7 @@ public class AppointmentController extends HttpServlet {
 					
 					request.setAttribute("patient", patient);
 					request.setAttribute("insert", 1);
-					
+					request.setAttribute("event", eventId);
 					target="patientDoctorPlanner.jsp";
 				}
 				if(request.getParameter("operation").equalsIgnoreCase("update"))
@@ -193,7 +193,7 @@ public class AppointmentController extends HttpServlet {
 
 					Patient patient = lService.getPatientById(pId);
 					lService.setLastActive(login);
-					String content = "<a href='appointment.doctor'> "+patient.getFirstName()+"&nbsp; "+patient.getLastName()+" Has Updated Details of Requested Appointment</a>";
+					String content = "<a href='appointment.doctor?eId="+eventId+"'>"+patient.getFirstName()+"&nbsp; "+patient.getLastName()+" Has Updated Details of Requested Appointment</a>";
 					Notification notification = new Notification(0, pId, content, dId, 0,1);
 					notification.setImage(patient.getImage());
 					lService.saveNotification(notification);
@@ -210,7 +210,7 @@ public class AppointmentController extends HttpServlet {
 					
 					request.setAttribute("patient", patient);
 					request.setAttribute("insert", 1);
-					
+					request.setAttribute("event", eventId);
 					target="patientDoctorPlanner.jsp";
 				}
 				
@@ -326,7 +326,7 @@ public class AppointmentController extends HttpServlet {
 				
 				Appointment appointment1 = service.getEventById(eventId);
 				
-				String content = "<a href='appointment.doctor'> "+patient.getFirstName()+"&nbsp; "+patient.getLastName()+" Has Updated Details of Requested Appointment</a>";
+				String content = "<a href='appointment.doctor?eId="+eventId+"'> "+patient.getFirstName()+"&nbsp; "+patient.getLastName()+" Has Updated Details of Requested Appointment</a>";
 				Notification notification = new Notification(0, id, content, appointment1.getDoctorId(), 0,1);
 				notification.setImage(patient.getImage());
 				lService.saveNotification(notification);
@@ -334,7 +334,7 @@ public class AppointmentController extends HttpServlet {
 				
 				request.setAttribute("patient", patient);
 				request.setAttribute("insert", 1);
-				
+				request.setAttribute("event", eventId);
 				target="patientPlanner.jsp";
 			}  catch (Exception e) {
 				try {
@@ -381,6 +381,7 @@ public class AppointmentController extends HttpServlet {
 	
 					Doctor doctor = lService.getDoctorById(id);
 					request.setAttribute("doctor", doctor);
+					
 					target ="doctorPlanner.jsp";
 				}
 				if(login.getType()==2)
@@ -412,7 +413,7 @@ public class AppointmentController extends HttpServlet {
 
 					if(doctorId>0)
 					{
-						String content = "<a href='appointment.doctor'> "+patient.getFirstName()+"&nbsp; "+patient.getLastName()+" Has Made Request for Appointment</a>";
+						String content = "<a href='appointment.doctor?eId="+eventId+"'>"+patient.getFirstName()+"&nbsp; "+patient.getLastName()+" Has Made Request for Appointment</a>";
 						Notification notification = new Notification(0, id, content, doctorId, 0,1);
 						notification.setImage(patient.getImage());
 						lService.saveNotification(notification);
@@ -430,6 +431,7 @@ public class AppointmentController extends HttpServlet {
 					List<Doctor> doctors = lService.getAllDoctors(id);
 					request.setAttribute("doctors", doctors);
 					request.setAttribute("patient", patient);
+					request.setAttribute("event", eventId);
 					target="patientPlanner.jsp";
 				}
 				if(login.getType()==3)
@@ -500,6 +502,7 @@ public class AppointmentController extends HttpServlet {
 	
 					Doctor doctor = lService.getDoctorById(id);
 					request.setAttribute("doctor", doctor);
+					request.setAttribute("event", eventId);
 					target ="doctorPlanner.jsp";
 				}
 				if(login.getType()==2)
@@ -518,7 +521,7 @@ public class AppointmentController extends HttpServlet {
 					service.updateAppointment(appointment);
 
 					Patient patient = lService.getPatientById(id);
-					
+					request.setAttribute("event", eventId);
 					request.setAttribute("patient", patient);
 					target="patientPlanner.jsp";
 				}
@@ -730,7 +733,7 @@ public class AppointmentController extends HttpServlet {
 				Appointment appointment = service.getEventById(eventId);
 				
 				
-				String content = "<a href='appointment.patient'> Doctor:"+doctor.getFirstName()+"&nbsp; "+doctor.getLastName()+" Has Confirmed Your Request for Appointment</a>";
+				String content = "<a href='appointment.patient?eId="+eventId+"'> Doctor:"+doctor.getFirstName()+"&nbsp; "+doctor.getLastName()+" Has Confirmed Your Request for Appointment</a>";
 				Notification notification = new Notification(0, appointment.getDoctorId(), content, appointment.getPatientId(), 0,2);
 				notification.setImage(doctor.getImage());
 				lService.saveNotification(notification);

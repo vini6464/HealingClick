@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.vinod.model.Appointment;
 import com.vinod.model.Disease;
 import com.vinod.model.Doctor;
 import com.vinod.model.Log;
@@ -35,10 +36,13 @@ import com.vinod.model.Post;
 import com.vinod.model.Prescription;
 import com.vinod.model.Symptom;
 import com.vinod.service.AlertService;
+import com.vinod.service.AppointmentService;
 import com.vinod.service.DoctorService;
 import com.vinod.service.LoginService;
 import com.vinod.service.OrderService;
 import com.vinod.service.PatientService;
+
+import sun.security.util.Cache;
 
 /**
  * Servlet implementation class DoctorController
@@ -76,7 +80,7 @@ public class DoctorController extends HttpServlet {
 		System.out.println(uri);
 		DoctorService service = new DoctorService();
 		LoginService lService = new LoginService();
-
+		
 
 		String target = "home.jsp";
 
@@ -111,9 +115,24 @@ public class DoctorController extends HttpServlet {
 				int id = login.getId();
 				Doctor doctor;
 				doctor = lService.getDoctorById(id);
-				List<Symptom> symptoms = service.getAllSymptoms();
-				request.setAttribute("symptoms", symptoms);
+				
 				request.setAttribute("doctor", doctor);
+				
+				String event = request.getParameter("eId");
+				if(event!=null  && !event.isEmpty()){
+					
+					
+					int eventId = Integer.parseInt(event);
+
+					AppointmentService aService = new AppointmentService();
+					Appointment appointment = aService.getEventById(eventId);
+
+					if(appointment.getDoctorId() == doctor.getId())
+					{
+						request.setAttribute("event", event);
+						
+					}	
+				}
 				target ="doctorPlanner.jsp";
 
 			}

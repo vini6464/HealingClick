@@ -165,6 +165,125 @@ function validateUTime() {
 	
 }
 
+
+function showAppointment(id , changeDate) {
+	
+	
+	 $.ajax({
+			method: "GET",
+			url : 'getEvent.appointment',
+     	datatype:'json',
+     	data: { 
+     		eventId : id
+			},
+			success: function(result){
+     
+				var res = jQuery.parseJSON(result);
+				
+				if(res.patientId == 0){
+					var st = new Date(res.start).toJSON();
+					var lt = new Date(res.end).toJSON();
+					 var res1 = st.split("T");
+					 var res2 = lt.split("T");
+					 var day = res1[0];
+					 
+					 if(changeDate == 1){
+						 
+						 $('#calendar').fullCalendar( 'gotoDate', new Date(day));
+					 }
+					 var dayRes = day.split("-");
+					 var st1 = res1[1].split(":");
+					 st1 = st1[0]+":"+st1[1];
+					
+					 var lt1 = res2[1].split(":");
+					 lt1 = lt1[0]+":"+lt1[1];
+					
+					var htmlString='<table id="details">';
+					htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Title</label></td><td class="col-md-9"> '+res.title+'</td></tr>';
+					/* htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Description</label></td><td class="col-md-9"> '+res.description+'</td></tr>'; */
+					htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Date</label></td><td class="col-md-9"> '+dayRes[2]+"/"+dayRes[1]+"/"+dayRes[0]+'</td></tr>';
+					htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Start Time</label></td><td class="col-md-9"> '+st1+'</td></tr>';
+					htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>End Time</label></td><td class="col-md-9"> '+lt1+'</td></tr>';
+					
+					
+					htmlString = htmlString+'<tr><td class="field-label col-xs-3"><input class="btn btn-info btn-block btn-sm" type="button" value="Delete" onclick = deleteEvent('+id+');></td><td class="col-md-9"> <input class="btn btn-info btn-block btn-sm" type="button" value="Update" onclick="SwitchDetails()"></td></tr></table>';
+					
+					$("#addEventId").html('<input type=text class=hidden name=day value='+day+'><input class=hidden type=text name=eventId value='+id+'>');
+					
+					
+					$("#showbody").html(htmlString);
+					
+					 
+					 $("#no").html('<input type=text class=hidden name=day value='+day+' >');
+					
+					 $('#start1').val(st1); 
+					 $('#last1').val(lt1); 
+					 $('#day1').text(dayRes[2]+"/"+dayRes[1]+"/"+dayRes[0]); 
+					
+					$("#update").hide();
+					$("#show").modal();
+				}
+				else
+					{
+					
+					var st = new Date(res.start).toJSON();
+					var lt = new Date(res.end).toJSON();
+					 var res1 = st.split("T");
+					 var res2 = lt.split("T");
+					 var day = res1[0];
+					 
+					 if(changeDate == 1){
+						 
+						 $('#calendar').fullCalendar( 'gotoDate', new Date(day));
+					 }
+					 var dayRes = day.split("-");
+					 var st1 = res1[1].split(":");
+					 st1 = st1[0]+":"+st1[1];
+					
+					 var lt1 = res2[1].split(":");
+					 lt1 = lt1[0]+":"+lt1[1];
+					
+					var status = "Accepted";
+					if(res.status==0)
+					{
+						status = "Pending";
+					}
+					var htmlString='<table id="specialdetails"><tr><td class="field-label col-xs-3 active"><label>Patient Name</label></td><td class="col-md-9"> '+res.patientName+'</td></tr>';
+					htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Title</label></td><td class="col-md-9"> '+res.title+'</td></tr>';
+					/* htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Description</label></td><td class="col-md-9"> '+res.description+'</td></tr>'; */
+					htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Symptoms</label></td><td class="col-md-9"> '+res.symptom+'</td></tr>';
+					htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Date</label></td><td class="col-md-9"> '+dayRes[2]+"/"+dayRes[1]+"/"+dayRes[0]+'</td></tr>';
+					htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Start Time</label></td><td class="col-md-9"> '+st1+'</td></tr>';
+					htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>End Time</label></td><td class="col-md-9"> '+lt1+'</td></tr>';
+					htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Status</label></td><td class="col-md-9"> '+status+'</td></tr>';
+					
+					if(res.status==0)
+					{
+						htmlString = htmlString+'<tr id=accept><td class="field-label col-xs-3"><input class="btn btn-info btn-block btn-sm" type="button" value="Accept" onclick="acceptAppointment('+res.id+')"></td><td class="col-md-9"> <input class="btn btn-info btn-block btn-sm" type="button" value="Delete" onclick = deleteSpecialEvent('+id+','+res.patientId+');></td></tr></table>';
+						
+					}
+					
+					$("#specialshowbody").html(htmlString);
+					$("#specialshow").modal();
+					}
+				
+				
+					
+				
+			},
+			statusCode : {
+				500: function(result){
+					alert(result);
+				}
+			}
+		});
+	 
+	 
+	 
+}
+
+
+
 </script>
 <script>
 
@@ -178,103 +297,10 @@ $(document).ready(function() {
 		},
 		defaultView: 'agendaDay',
 		eventClick: function(event, element) {
+			
+			showAppointment(event.id ,0);
         
-            $.ajax({
-				method: "GET",
-				url : 'getEvent.appointment',
-            	datatype:'json',
-            	data: { 
-            		eventId : event.id
-				},
-				success: function(result){
-            
-					var res = jQuery.parseJSON(result);
-					
-					if(res.patientId == 0){
-						var st = new Date(event.start).toJSON();
-						var lt = new Date(event.end).toJSON();
-						 var res1 = st.split("T");
-						 var res2 = lt.split("T");
-						 var day = res1[0];
-						 var dayRes = day.split("-");
-						 var st1 = res1[1].split(":");
-						 st1 = st1[0]+":"+st1[1];
-						
-						 var lt1 = res2[1].split(":");
-						 lt1 = lt1[0]+":"+lt1[1];
-						
-						var htmlString='<table id="details">';
-						htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Title</label></td><td class="col-md-9"> '+res.title+'</td></tr>';
-						/* htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Description</label></td><td class="col-md-9"> '+res.description+'</td></tr>'; */
-						htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Date</label></td><td class="col-md-9"> '+dayRes[2]+"/"+dayRes[1]+"/"+dayRes[0]+'</td></tr>';
-						htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Start Time</label></td><td class="col-md-9"> '+st1+'</td></tr>';
-						htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>End Time</label></td><td class="col-md-9"> '+lt1+'</td></tr>';
-						
-						
-						htmlString = htmlString+'<tr><td class="field-label col-xs-3"><input class="btn btn-info btn-block btn-sm" type="button" value="Delete" onclick = deleteEvent('+event.id+');></td><td class="col-md-9"> <input class="btn btn-info btn-block btn-sm" type="button" value="Update" onclick="SwitchDetails()"></td></tr></table>';
-						
-						$("#addEventId").html('<input type=text class=hidden name=day value='+day+'><input class=hidden type=text name=eventId value='+event.id+'>');
-						
-						
-						$("#showbody").html(htmlString);
-						
-						 
-						 $("#no").html('<input type=text class=hidden name=day value='+day+' >');
-						
-						 $('#start1').val(st1); 
-						 $('#last1').val(lt1); 
-						 $('#day1').text(dayRes[2]+"/"+dayRes[1]+"/"+dayRes[0]); 
-						
-						$("#update").hide();
-						$("#show").modal();
-					}
-					else
-						{
-						
-						var st = new Date(event.start).toJSON();
-						var lt = new Date(event.end).toJSON();
-						 var res1 = st.split("T");
-						 var res2 = lt.split("T");
-						 var day = res1[0];
-						 var dayRes = day.split("-");
-						 var st1 = res1[1].split(":");
-						 st1 = st1[0]+":"+st1[1];
-						
-						 var lt1 = res2[1].split(":");
-						 lt1 = lt1[0]+":"+lt1[1];
-						
-						var status = "Accepted";
-						if(res.status==0)
-						{
-							status = "Pending";
-						}
-						var htmlString='<table id="specialdetails"><tr><td class="field-label col-xs-3 active"><label>Patient Name</label></td><td class="col-md-9"> '+res.patientName+'</td></tr>';
-						htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Title</label></td><td class="col-md-9"> '+res.title+'</td></tr>';
-						/* htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Description</label></td><td class="col-md-9"> '+res.description+'</td></tr>'; */
-						htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Symptoms</label></td><td class="col-md-9"> '+res.symptom+'</td></tr>';
-						htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Date</label></td><td class="col-md-9"> '+dayRes[2]+"/"+dayRes[1]+"/"+dayRes[0]+'</td></tr>';
-						htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Start Time</label></td><td class="col-md-9"> '+st1+'</td></tr>';
-						htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>End Time</label></td><td class="col-md-9"> '+lt1+'</td></tr>';
-						htmlString = htmlString+'<tr><td class="field-label col-xs-3 active"><label>Status</label></td><td class="col-md-9"> '+status+'</td></tr>';
-						
-						if(res.status==0)
-						{
-							htmlString = htmlString+'<tr id=accept><td class="field-label col-xs-3"><input class="btn btn-info btn-block btn-sm" type="button" value="Accept" onclick="acceptAppointment('+event.id+')"></td><td class="col-md-9"> <input class="btn btn-info btn-block btn-sm" type="button" value="Delete" onclick = deleteSpecialEvent('+event.id+','+res.patientId+');></td></tr></table>';
-							
-						}
-						
-						$("#specialshowbody").html(htmlString);
-						$("#specialshow").modal();
-						}
-						
-					
-				},
-				statusCode : {
-					500: function(result){
-						alert(result);
-					}
-				}
-			});
+           
 
 	    },
 		selectable: true,
@@ -307,7 +333,14 @@ $(document).ready(function() {
 		events: "getEvents.appointment"
 	});
 	
+	
+	var eventId = "${event}";
+	showAppointment(eventId , 1);
 });
+
+
+
+
 
 </script>
 <style>
