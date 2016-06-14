@@ -1,13 +1,11 @@
 <%@ include file="pharmacyHeader.jsp" %>
-<script>
-function preventBackButton(){window.history.forward();}
-setTimeout("preventBackButton()", 0);
-window.onunload=function(){null};
-</script>
+
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
-<link href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
-<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+<link href="datatable/jquery.dataTables.css" rel="stylesheet">
+<link href="datatable/dataTables.tableTools.css" rel="stylesheet">
+<script src="datatable/jquery.dataTables.js" type="text/javascript"></script>
+<script src="datatable/dataTables.tableTools.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('#example').DataTable();
