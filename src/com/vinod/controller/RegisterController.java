@@ -11,6 +11,8 @@ import java.sql.Timestamp;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +24,7 @@ import com.vinod.model.Patient;
 import com.vinod.model.Pharmacy;
 import com.vinod.service.LoginService;
 import com.vinod.service.RegisterService;
+import com.vinod.service.SearchService;
 
 /**
  * Servlet implementation class RegisterController
@@ -455,6 +458,12 @@ javax.servlet.Servlet {
 					if(i>0)
 					{
 						request.setAttribute("msg", "SuccessFully Registered, Please wait for our Confirmation.");
+						
+						SearchService sService= new SearchService();
+						List<Pharmacy> pharmacies = service.getAllPharmacies();
+						for (Pharmacy p : pharmacies) {
+							sService.doctorPharmacy(p.getId(),i);
+						}
 					}
 					String content = "Created";
 					Log log = new Log(i,1,content);
@@ -519,7 +528,14 @@ javax.servlet.Servlet {
 					int i = service.registerPatient(patient);
 					if(i>0)
 					{
+						
 						request.setAttribute("msg", "SuccessFully Registered");
+						SearchService sService= new SearchService();
+						List<Pharmacy> pharmacies = service.getAllPharmacies();
+						for (Pharmacy p : pharmacies) {
+							sService.patientPharmacy(p.getId(),i);
+						}
+						
 
 					}
 					String content = "Created";

@@ -5,7 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.vinod.exception.DaoException;
 import com.vinod.model.Doctor;
@@ -438,6 +440,50 @@ public class RegisterDao {
 			DBUtil.releaseResource(con);
 		}
 		return i;
+	}
+
+	public List<Pharmacy> getAllPharmacies() throws DaoException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Pharmacy> pharmacies = new ArrayList<Pharmacy>();
+		String query = "select Id from pharmacy where isdeleted = 0 LIMIT 5";
+		
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement(query);
+			
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next())
+			{
+				Pharmacy pharmacy  = new Pharmacy();
+				pharmacy.setId(rs.getInt(1));
+				/*pharmacy.setUserName(rs.getString(2));
+				pharmacy.setFirstName(rs.getString(4));
+				pharmacy.setLastName(rs.getString(5));
+				pharmacy.setImage(rs.getString(6));
+				pharmacy.setAddress1(rs.getString(9));
+				pharmacy.setAddress1(rs.getString(10));
+				pharmacy.setCity(rs.getString(11));
+				pharmacy.setState(rs.getString(12));
+				pharmacy.setCountry(rs.getString(13));
+				pharmacy.setPinCode(rs.getLong(14));
+				pharmacy.setLandMark(rs.getString(15));
+				pharmacy.setPharmacyName(rs.getString(17));*/
+				
+				pharmacies.add(pharmacy);
+			}
+		}  catch (SQLException e) {
+			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+		}finally
+		{
+			DBUtil.releaseResource(rs);
+			DBUtil.releaseResource(ps);
+			DBUtil.releaseResource(con);
+		}
+		return pharmacies;
 	}
 	
 

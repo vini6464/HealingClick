@@ -1,5 +1,7 @@
 package com.vinod.service;
 
+import java.util.List;
+
 import com.vinod.dao.RegisterDao;
 import com.vinod.exception.DaoException;
 import com.vinod.model.Doctor;
@@ -68,6 +70,11 @@ public class RegisterService {
 	public int checkUserNamePharmacy(long mobile) throws DaoException {
 		int i = dao.checkUserNamePharmacy(mobile);
 		return i;
+	}
+
+	public List<Pharmacy> getAllPharmacies() throws DaoException {
+		List<Pharmacy> pharmacies = dao.getAllPharmacies();
+		return pharmacies;
 	}
 
 }
