@@ -302,7 +302,7 @@ public class OrderController extends HttpServlet {
 
 					if(filePart.getSize()!=0)
 					{
-						String SAVE_DIR = "Images"+ File.separator +"Order"+ File.separator +"order"+login.getUserName()+""+new Date().getTime();
+						String SAVE_DIR = "Images"+ File.separator +"Order"+ File.separator +"doctororder"+login.getUserName();
 						// gets absolute path of the web application
 						String appPath = request.getServletContext().getRealPath("");
 						// constructs path of the directory to save uploaded file
@@ -319,10 +319,10 @@ public class OrderController extends HttpServlet {
 							if(fileName!=null)
 							{
 								System.out.println(fileName);
-								forumPath=SAVE_DIR + File.separator + fileName;
+								forumPath=SAVE_DIR + File.separator +new Date().getTime();
 							}
 
-							part.write(savePath + File.separator + fileName);
+							part.write(savePath + File.separator +new Date().getTime());
 
 						}
 					}
@@ -439,7 +439,7 @@ public class OrderController extends HttpServlet {
 
 					if(filePart.getSize()!=0)
 					{
-						String SAVE_DIR = "Images"+ File.separator +"Order"+ File.separator +"order"+login.getUserName()+""+new Date().getTime();
+						String SAVE_DIR = "Images"+ File.separator +"Order"+ File.separator +"patientorder"+login.getUserName();
 						// gets absolute path of the web application
 						String appPath = request.getServletContext().getRealPath("");
 						// constructs path of the directory to save uploaded file
@@ -455,10 +455,10 @@ public class OrderController extends HttpServlet {
 							String fileName = extractFileName(part);
 							if(fileName!=null)
 							{
-								forumPath=SAVE_DIR + File.separator + fileName;
+								forumPath=SAVE_DIR + File.separator +new Date().getTime();
 							}
 
-							part.write(savePath + File.separator + fileName);
+							part.write(savePath + File.separator +new Date().getTime());
 
 						}
 					}
@@ -572,7 +572,7 @@ public class OrderController extends HttpServlet {
 
 					if(filePart.getSize()!=0)
 					{
-						String SAVE_DIR = "Images"+ File.separator +"Order"+ File.separator +"order"+login.getUserName()+""+new Date().getTime();
+						String SAVE_DIR = "Images"+ File.separator +"Order"+ File.separator +"pharmacyorder"+login.getUserName();
 						// gets absolute path of the web application
 						String appPath = request.getServletContext().getRealPath("");
 						// constructs path of the directory to save uploaded file
@@ -588,10 +588,10 @@ public class OrderController extends HttpServlet {
 							String fileName = extractFileName(part);
 							if(fileName!=null)
 							{
-								forumPath=SAVE_DIR + File.separator + fileName;
+								forumPath=SAVE_DIR + File.separator +new Date().getTime();
 							}
 
-							part.write(savePath + File.separator + fileName);
+							part.write(savePath + File.separator +new Date().getTime());
 
 						}
 					}

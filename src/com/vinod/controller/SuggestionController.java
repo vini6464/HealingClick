@@ -576,7 +576,7 @@ public class SuggestionController extends HttpServlet {
 
 				if(filePart.getSize()!=0)
 				{
-					String SAVE_DIR = "Images"+ File.separator +"Suggestion"+ File.separator +"suggestion"+login.getUserName()+""+new Date().getTime();
+					String SAVE_DIR = "Images"+ File.separator +"Suggestion"+ File.separator +"suggestion"+login.getUserName();
 					// gets absolute path of the web application
 					String appPath = request.getServletContext().getRealPath("");
 					// constructs path of the directory to save uploaded file
@@ -592,10 +592,10 @@ public class SuggestionController extends HttpServlet {
 						String fileName = extractFileName(part);
 						if(fileName!=null)
 						{
-							forumPath=SAVE_DIR + File.separator + fileName;
+							forumPath=SAVE_DIR + File.separator +new Date().getTime();
 						}
 
-						part.write(savePath + File.separator + fileName);
+						part.write(savePath + File.separator +new Date().getTime());
 
 					}
 				}

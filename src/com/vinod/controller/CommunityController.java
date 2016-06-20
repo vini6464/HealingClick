@@ -120,7 +120,7 @@ public class CommunityController extends HttpServlet {
 
 				if(filePart.getSize()!=0)
 				{
-					String SAVE_DIR = "Images"+ File.separator +"Post"+ File.separator +login.getUserName()+new Date().getTime();
+					String SAVE_DIR = "Images"+ File.separator +"Post"+ File.separator +"community"+login.getUserName();
 					// gets absolute path of the web application
 					String appPath = request.getServletContext().getRealPath("");
 					// constructs path of the directory to save uploaded file
@@ -136,10 +136,10 @@ public class CommunityController extends HttpServlet {
 						String fileName = extractFileName(part);
 						if(fileName!=null)
 						{
-							filePath= SAVE_DIR+ File.separator + fileName;
+							filePath= SAVE_DIR+ File.separator +new Date().getTime();
 						}
 
-						part.write(savePath + File.separator + fileName);
+						part.write(savePath + File.separator +new Date().getTime());
 
 
 					}
@@ -209,7 +209,7 @@ public class CommunityController extends HttpServlet {
 
 				if(filePart.getSize()!=0)
 				{
-					String SAVE_DIR = "Images"+ File.separator +"Post"+ File.separator +login.getUserName()+new Date().getTime();
+					String SAVE_DIR = "Images"+ File.separator +"Post"+ File.separator +"community"+login.getUserName();
 					// gets absolute path of the web application
 					String appPath = request.getServletContext().getRealPath("");
 					// constructs path of the directory to save uploaded file
@@ -225,10 +225,10 @@ public class CommunityController extends HttpServlet {
 						String fileName = extractFileName(part);
 						if(fileName!=null)
 						{
-							filePath= SAVE_DIR+ File.separator + fileName;
+							filePath= SAVE_DIR+ File.separator +new Date().getTime();
 						}
 
-						part.write(savePath + File.separator + fileName);
+						part.write(savePath + File.separator +new Date().getTime());
 
 
 					}
@@ -436,7 +436,7 @@ public class CommunityController extends HttpServlet {
 
 					if(filePart.getSize()!=0)
 					{
-						String SAVE_DIR = "Images"+ File.separator +"Post"+ File.separator +login.getUserName()+new Date().getTime();
+						String SAVE_DIR = "Images"+ File.separator +"Post"+ File.separator +login.getUserName();
 						// gets absolute path of the web application
 						String appPath = request.getServletContext().getRealPath("");
 						// constructs path of the directory to save uploaded file
@@ -452,10 +452,10 @@ public class CommunityController extends HttpServlet {
 							String fileName = extractFileName(part);
 							if(fileName!=null)
 							{
-								filePath= SAVE_DIR+ File.separator + fileName;
+								filePath= SAVE_DIR+ File.separator +new Date().getTime();
 							}
 
-							part.write(savePath + File.separator + fileName);
+							part.write(savePath + File.separator +new Date().getTime());
 
 						}
 					}

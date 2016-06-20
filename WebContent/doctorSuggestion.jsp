@@ -15,7 +15,7 @@
 		<div class="panel panel-default">
   <div class="panel-body">
 			<h5 class="text-center">
-				There are no posts available </h5></div></div>
+				There are No Suggestion Request available </h5></div></div>
 				</div>
 				<div class="col-md-1 column"></div>
 		</div>

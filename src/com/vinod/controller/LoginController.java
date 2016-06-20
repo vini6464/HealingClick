@@ -177,7 +177,7 @@ public class LoginController extends HttpServlet {
 				if(file.getSize()!=0)
 				{
 
-					String SAVE_DIR = "Images"+ File.separator +"ProfileImage"+ File.separator +"doctor"+login.getUserName()+new Date().getTime();
+					String SAVE_DIR = "Images"+ File.separator +"ProfileImage"+ File.separator +"doctor"+login.getUserName();
 					// gets absolute path of the web application
 					String appPath = request.getServletContext().getRealPath("");
 					// constructs path of the directory to save uploaded file
@@ -193,11 +193,10 @@ public class LoginController extends HttpServlet {
 						fileName = extractFileName(part);
 						if(fileName!=null)
 						{
-							imagePath= SAVE_DIR + File.separator +fileName;
+							imagePath=SAVE_DIR + File.separator +new Date().getTime();
 						}
 
-						
-						part.write(savePath + File.separator + fileName);
+						part.write(savePath + File.separator +new Date().getTime());
 
 					}
 				}
@@ -222,7 +221,7 @@ public class LoginController extends HttpServlet {
 				if(file.getSize()!=0)
 				{
 
-					String SAVE_DIR ="Images"+ File.separator +"ProfileImage"+ File.separator +"patient"+login.getUserName()+new Date().getTime();
+					String SAVE_DIR ="Images"+ File.separator +"ProfileImage"+ File.separator +"patient"+login.getUserName();
 					// gets absolute path of the web application
 					String appPath = request.getServletContext().getRealPath("");
 					// constructs path of the directory to save uploaded file
@@ -238,10 +237,10 @@ public class LoginController extends HttpServlet {
 						fileName = extractFileName(part);
 						if(fileName!=null)
 						{
-							imagePath=SAVE_DIR + File.separator +fileName;
+							imagePath=SAVE_DIR + File.separator +new Date().getTime();
 						}
 
-						part.write(savePath + File.separator + fileName);
+						part.write(savePath + File.separator +new Date().getTime());
 
 					}
 				}
@@ -265,7 +264,7 @@ public class LoginController extends HttpServlet {
 				if(file.getSize()!=0)
 				{
 
-					String SAVE_DIR = "Images"+ File.separator +"ProfileImage"+ File.separator +"doctor"+login.getUserName()+new Date().getTime();
+					String SAVE_DIR = "Images"+ File.separator +"ProfileImage"+ File.separator +"doctor"+login.getUserName();
 					// gets absolute path of the web application
 					String appPath = request.getServletContext().getRealPath("");
 					// constructs path of the directory to save uploaded file
@@ -281,10 +280,10 @@ public class LoginController extends HttpServlet {
 						fileName = extractFileName(part);
 						if(fileName!=null)
 						{
-							imagePath=SAVE_DIR + File.separator +fileName;
+							imagePath=SAVE_DIR + File.separator +new Date().getTime();
 						}
 
-						part.write(savePath + File.separator + fileName);
+						part.write(savePath + File.separator +new Date().getTime());
 
 					}
 				}
