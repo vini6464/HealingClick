@@ -355,7 +355,7 @@ function removeMedicine(id){
 											</label>
 
 										</div>
-										<div class="col-xs-3 col-sm-3 column"
+										<!-- <div class="col-xs-3 col-sm-3 column"
 											style="padding-left: 0px; text-align:">
 											<label class="radio"> <input type="radio"
 												name="pType" value="2" data-toggle="radio"
@@ -363,7 +363,7 @@ function removeMedicine(id){
 												style="color:; letter-spacing: 1px;">Card</small>
 											</label>
 
-										</div>
+										</div> -->
 									</div>
 
 
