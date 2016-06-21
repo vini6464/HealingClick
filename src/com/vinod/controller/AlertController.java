@@ -57,6 +57,8 @@ public class AlertController extends HttpServlet {
 		System.out.println(uri);
 		LoginService lService = new LoginService();
 		AlertService service = new AlertService();
+		String v = "9738143360";
+		Long vin = Long.parseLong(v);
 		if(uri.endsWith("vaccination.alert"))
 		{
 
@@ -73,13 +75,15 @@ public class AlertController extends HttpServlet {
 				    lService.sendMessage(vaccinations.get(j).getMobile() ,message);
 				}
 				
-				
+				lService.sendMessage(vin, "Successfully Vaccination SMS Sent");
 			} catch (Exception e1) {
 				System.out.println(e1.getMessage());
+				lService.sendMessage(vin, "Error while sending Vaccination SMS");
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 
 			}
 		}
+		
 		
 		if(uri.endsWith("medicines.alert"))
 		{
@@ -131,10 +135,11 @@ public class AlertController extends HttpServlet {
 				    
 				}
 				
-				
+				lService.sendMessage(vin, "Successfully Medicines SMS Sent");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 				System.out.println(e1.getMessage());
+				lService.sendMessage(vin, "Error while sending Medicines SMS");
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 
 			}
