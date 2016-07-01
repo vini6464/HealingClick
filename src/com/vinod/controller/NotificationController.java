@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.vinod.service.CommunityService;
 import com.google.gson.Gson;
 import com.vinod.listener.Initialize;
@@ -45,6 +47,7 @@ import com.vinod.service.PharmacyService;
 public class NotificationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	final static Logger logger = Logger.getLogger(NotificationController.class);
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -76,7 +79,7 @@ public class NotificationController extends HttpServlet {
 		OrderService oService = new OrderService();
 		String uri=request.getRequestURI();
 
-		System.out.println(uri);
+		logger.info(uri);
 		if(uri.endsWith("checkLogin.notification"))
 		{
 			
@@ -109,7 +112,7 @@ public class NotificationController extends HttpServlet {
 					
 					pw.print(msg);
 				} catch (Exception e) {
-					
+					logger.error(e.getStackTrace());
 					pw.print(msg);
 				}
 				
@@ -139,7 +142,7 @@ public class NotificationController extends HttpServlet {
 					 
 					 pw.print(msg);
 				} catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					pw.print(msg);
 				}
 				
@@ -169,7 +172,7 @@ public class NotificationController extends HttpServlet {
 					 }
 					 pw.print(msg);
 				} catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					pw.print(msg);
 				}
 				
@@ -198,7 +201,7 @@ public class NotificationController extends HttpServlet {
 					 
 					 
 				} catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					
 				}
 				
@@ -229,7 +232,7 @@ public class NotificationController extends HttpServlet {
 					
 					 pw.print(msg);
 				} catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					msg = 0;
 					pw.print(msg);
 				}
@@ -303,7 +306,7 @@ public class NotificationController extends HttpServlet {
 					
 					pw.print(msg);
 				} catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					pw.print(msg);
 				}
 				
@@ -335,7 +338,7 @@ public class NotificationController extends HttpServlet {
 				
 
 			}  catch (Exception e) {
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				target = "home.jsp";
 			}
 			request.getRequestDispatcher(target).forward(request, response);
@@ -624,7 +627,7 @@ public class NotificationController extends HttpServlet {
 				
 			}
 	        } catch (Exception e) {
-	        	System.out.println("\n In controller Error:"+e.getMessage());
+	        	logger.error(e.getStackTrace());
 	        	PrintWriter pw = response.getWriter();
 				pw.print("empty");
 			}
@@ -687,7 +690,7 @@ public class NotificationController extends HttpServlet {
 						msg = "<input class='btn btn-info btn-block btn-sm' style='font-weight: bold; width: %;' type=button value=Delivered onclick=deliverOrder("+oId+")>";
 						pw.print(msg);
 					} catch (Exception e) {
-						System.out.println("\n In controller Error:"+e.getMessage());
+						logger.error(e.getStackTrace());
 						PrintWriter pw1 = response.getWriter();
 	    				pw1.print("empty");
 					}
@@ -783,7 +786,7 @@ public class NotificationController extends HttpServlet {
 
 						pw.print(msg);
 					} catch (Exception e) {
-						System.out.println("\n In controller Error:"+e.getMessage());
+						logger.error(e.getStackTrace());
 	    				pw.print(0);
 					}
 					
@@ -827,7 +830,7 @@ public class NotificationController extends HttpServlet {
 				pw.print("clear");	
 
 			}  catch (Exception e) {
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				PrintWriter pw = response.getWriter();
 				pw.print("empty");
 			}
@@ -845,7 +848,7 @@ public class NotificationController extends HttpServlet {
 				pw.print("clear");	
 
 			}  catch (Exception e) {
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				PrintWriter pw = response.getWriter();
 				pw.print("empty");
 			}
@@ -924,7 +927,7 @@ public class NotificationController extends HttpServlet {
 				pw.print(1);	
 
 			}  catch (Exception e) {
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				PrintWriter pw = response.getWriter();
 				pw.print("empty");
 			}
@@ -968,7 +971,7 @@ public class NotificationController extends HttpServlet {
 				
 
 			}  catch (Exception e) {
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				PrintWriter pw = response.getWriter();
 				pw.print("empty");
 			}
@@ -987,7 +990,7 @@ public class NotificationController extends HttpServlet {
 				post.setContent(content);
 				service.saveSupport(post);
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1003,7 +1006,7 @@ public class NotificationController extends HttpServlet {
 				int privacyValue = Integer.parseInt(request.getParameter("privacyValue"));
 				service.savePrivacy(login , privacyValue);
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1026,7 +1029,7 @@ public class NotificationController extends HttpServlet {
 
 				pw.print(symptomsList);	
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1046,7 +1049,7 @@ public class NotificationController extends HttpServlet {
 
 				pw.print(medicinesList);	
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1075,7 +1078,7 @@ public class NotificationController extends HttpServlet {
 
 				pw.print(medicinesList);	
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1126,7 +1129,7 @@ public class NotificationController extends HttpServlet {
 
 				pw.print(medicinesList);	
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1178,7 +1181,7 @@ public class NotificationController extends HttpServlet {
 
 				pw.print(medicinesList);	
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1229,7 +1232,7 @@ public class NotificationController extends HttpServlet {
 
 				pw.print(medicinesList);	
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1247,7 +1250,7 @@ public class NotificationController extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 				pw.print("deleted");	
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1266,7 +1269,7 @@ public class NotificationController extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 				pw.print("deleted");	
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1302,7 +1305,7 @@ public class NotificationController extends HttpServlet {
 				}
 				
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1321,7 +1324,7 @@ public class NotificationController extends HttpServlet {
 				
 				pw.print(likes.size());	
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 				
     				pw.print("empty");
 			}
@@ -1352,7 +1355,7 @@ public class NotificationController extends HttpServlet {
 					lService.saveNotification(notification);
 				}
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 				
     				pw.print("empty");
 			}
@@ -1376,7 +1379,7 @@ public class NotificationController extends HttpServlet {
 					cService.removeCommunityMembers(communityId , doctorsId[j]);
 				}
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 				
     				pw.print("empty");
 			}
@@ -1410,7 +1413,7 @@ public class NotificationController extends HttpServlet {
 				
 				
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 				
     				pw.print("empty");
 			}

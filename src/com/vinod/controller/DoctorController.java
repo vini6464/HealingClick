@@ -22,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.log4j.Logger;
+
 import com.vinod.model.Appointment;
 import com.vinod.model.Disease;
 import com.vinod.model.Doctor;
@@ -59,7 +61,7 @@ public class DoctorController extends HttpServlet {
 		super();
 
 	}
-
+	final static Logger logger = Logger.getLogger(DoctorController.class);
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -77,7 +79,7 @@ public class DoctorController extends HttpServlet {
 	private void doProcess(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String uri=request.getRequestURI();
-		System.out.println(uri);
+		logger.info(uri);
 		DoctorService service = new DoctorService();
 		LoginService lService = new LoginService();
 		
@@ -865,7 +867,7 @@ public class DoctorController extends HttpServlet {
 		} catch (Exception e) {
 			try {
 				
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				target = lService.setErrorControl(request,target,login1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 			} catch (Exception e1) {

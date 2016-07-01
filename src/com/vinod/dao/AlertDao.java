@@ -9,13 +9,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.vinod.exception.DaoException;
 import com.vinod.model.Medicine;
 import com.vinod.model.Vaccination;
 import com.vinod.util.DBUtil;
 
 public class AlertDao {
-
+	final static Logger logger = Logger.getLogger(AlertDao.class);
 	public List<Vaccination> getVaccinations() throws DaoException {
 	
 		Date date = new Date();
@@ -52,7 +54,7 @@ public class AlertDao {
 				
 			}
 		} catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -103,7 +105,7 @@ public class AlertDao {
 				
 			}
 		} catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -134,7 +136,7 @@ public class AlertDao {
 			
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);

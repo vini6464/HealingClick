@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.vinod.model.Appointment;
 import com.vinod.model.Doctor;
 import com.vinod.model.Login;
@@ -36,6 +38,7 @@ public class AlertController extends HttpServlet {
        
     }
 
+    final static Logger logger = Logger.getLogger(AlertController.class);
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -54,7 +57,7 @@ public class AlertController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		String uri=request.getRequestURI();
-		System.out.println(uri);
+		logger.info(uri);
 		LoginService lService = new LoginService();
 		AlertService service = new AlertService();
 		String v = "9738143360";
@@ -77,7 +80,7 @@ public class AlertController extends HttpServlet {
 				
 				lService.sendMessage(vin, "Successfully Vaccination SMS Sent");
 			} catch (Exception e1) {
-				System.out.println(e1.getMessage());
+				logger.error(e1.getStackTrace());
 				lService.sendMessage(vin, "Error while sending Vaccination SMS");
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 
@@ -137,8 +140,7 @@ public class AlertController extends HttpServlet {
 				
 				lService.sendMessage(vin, "Successfully Medicines SMS Sent");
 			} catch (Exception e1) {
-				e1.printStackTrace();
-				System.out.println(e1.getMessage());
+				logger.error(e1.getStackTrace());
 				lService.sendMessage(vin, "Error while sending Medicines SMS");
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 

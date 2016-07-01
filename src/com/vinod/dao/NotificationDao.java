@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.vinod.exception.DaoException;
 import com.vinod.model.Comment;
 import com.vinod.model.ForumPost;
@@ -19,7 +21,7 @@ import com.vinod.model.Post;
 import com.vinod.util.DBUtil;
 
 public class NotificationDao {
-
+	final static Logger logger = Logger.getLogger(NotificationDao.class);
 	public List<Notification> getNotifications(Login login) throws DaoException {
 		
 		List<Notification> notifications = new ArrayList<Notification>();
@@ -49,7 +51,7 @@ public class NotificationDao {
 			}
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -77,7 +79,7 @@ public class NotificationDao {
 		   
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			
@@ -116,7 +118,7 @@ public class NotificationDao {
 		   
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			
@@ -143,7 +145,7 @@ public class NotificationDao {
 		   
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			
@@ -183,7 +185,7 @@ public class NotificationDao {
 			}
 			
 		} catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -226,7 +228,7 @@ public class NotificationDao {
 			
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -255,7 +257,7 @@ public class NotificationDao {
 			
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -286,7 +288,7 @@ public class NotificationDao {
 			}
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -310,7 +312,7 @@ public class NotificationDao {
 			
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -335,7 +337,7 @@ public class NotificationDao {
 		    System.out.println("Successfully support question inseeted : "+i);
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			
@@ -371,7 +373,7 @@ public class NotificationDao {
 		  
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			
@@ -411,7 +413,7 @@ public class NotificationDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -452,7 +454,7 @@ public class NotificationDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -490,7 +492,7 @@ public class NotificationDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -524,7 +526,7 @@ public class NotificationDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -564,7 +566,7 @@ public class NotificationDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -594,7 +596,7 @@ public class NotificationDao {
 			
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -623,7 +625,7 @@ public class NotificationDao {
 			
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -661,7 +663,7 @@ public class NotificationDao {
 		} 
 		 catch (SQLException e) {
 			 e.printStackTrace();
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -702,7 +704,7 @@ public class NotificationDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -730,7 +732,7 @@ public class NotificationDao {
 			
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -759,7 +761,7 @@ public class NotificationDao {
 			
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -801,7 +803,7 @@ public class NotificationDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -843,7 +845,7 @@ public class NotificationDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);

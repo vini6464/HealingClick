@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.vinod.exception.DaoException;
 import com.vinod.model.Community;
 import com.vinod.model.Doctor;
@@ -18,7 +20,7 @@ import com.vinod.model.Post;
 import com.vinod.util.DBUtil;
 
 public class CommunityDao {
-
+	final static Logger logger = Logger.getLogger(CommunityDao.class);
 
 	public void saveCommunityPost(Post post) throws DaoException {
 		Connection con = null;
@@ -47,7 +49,7 @@ public class CommunityDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -82,7 +84,7 @@ public class CommunityDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -112,7 +114,7 @@ public class CommunityDao {
 			
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -151,7 +153,7 @@ public class CommunityDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -189,7 +191,7 @@ public class CommunityDao {
 				doctors.add(doctor);	
 			}
 		}  catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -218,7 +220,7 @@ public class CommunityDao {
 			
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -257,7 +259,7 @@ public class CommunityDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -295,7 +297,7 @@ public class CommunityDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -343,7 +345,7 @@ public class CommunityDao {
 			
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -373,7 +375,7 @@ public class CommunityDao {
 			
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);

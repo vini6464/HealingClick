@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.google.gson.Gson;
 import com.vinod.model.Appointment;
 import com.vinod.model.Doctor;
@@ -39,6 +41,7 @@ public class AppointmentController extends HttpServlet {
 		
 	}
 
+	final static Logger logger = Logger.getLogger(AppointmentController.class);
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -58,6 +61,8 @@ public class AppointmentController extends HttpServlet {
 		String target = "home.jsp";
 		DoctorService dService= new DoctorService();
 		LoginService lService = new LoginService();
+		String uri=request.getRequestURI();
+		logger.info(uri);
 		Login login1 = new Login();
 		try {
 			if(null == request.getSession().getAttribute("login")){  
@@ -79,8 +84,8 @@ public class AppointmentController extends HttpServlet {
 			//response.sendRedirect(target);
 		}
 		AppointmentService service = new AppointmentService();
-		String uri=request.getRequestURI();
-		System.out.println(uri);
+		
+		
 		if(uri.endsWith("patientDoctor.appointment"))
 		{
 			try {
@@ -250,11 +255,11 @@ public class AppointmentController extends HttpServlet {
 				}
 			}  catch (Exception e) {
 				try {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
-					
+					logger.error(e.getStackTrace());
 					
 					request.setAttribute("error", "Please Login To Continue.");
 					target="home.jsp";
@@ -284,7 +289,7 @@ public class AppointmentController extends HttpServlet {
 
 
 			}  catch (Exception e) {
-				
+				logger.error(e.getStackTrace());
 			}
 		}
 		
@@ -338,6 +343,7 @@ public class AppointmentController extends HttpServlet {
 				target="patientPlanner.jsp";
 			}  catch (Exception e) {
 				try {
+					logger.error(e.getStackTrace());
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
@@ -456,6 +462,7 @@ public class AppointmentController extends HttpServlet {
 				
 			}  catch (Exception e) {
 				try {
+					logger.error(e.getStackTrace());
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
@@ -551,6 +558,7 @@ public class AppointmentController extends HttpServlet {
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
+					logger.error(e.getStackTrace());
 					request.setAttribute("error", "Please Login To Continue.");
 					target="home.jsp";
 				}
@@ -608,7 +616,7 @@ public class AppointmentController extends HttpServlet {
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
-					
+					logger.error(e.getStackTrace());
 					request.setAttribute("error", "Please Login To Continue.");
 					target="home.jsp";
 				}
@@ -687,7 +695,7 @@ public class AppointmentController extends HttpServlet {
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
-					
+					logger.error(e.getStackTrace());
 					request.setAttribute("error", "Please Login To Continue.");
 					target="home.jsp";
 				}
@@ -713,7 +721,7 @@ public class AppointmentController extends HttpServlet {
 
 
 			}  catch (Exception e) {
-				
+				logger.error(e.getStackTrace());
 			}
 		}
 		
@@ -756,7 +764,7 @@ public class AppointmentController extends HttpServlet {
 
 
 			}  catch (Exception e) {
-				
+				logger.error(e.getStackTrace());
 			}
 		}
 		
@@ -793,7 +801,7 @@ public class AppointmentController extends HttpServlet {
 
 
 			}  catch (Exception e) {
-				
+				logger.error(e.getStackTrace());
 			}
 		}
 

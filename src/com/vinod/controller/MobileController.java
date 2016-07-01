@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.vinod.model.Chat;
 
 import com.vinod.model.Login;
@@ -25,7 +27,7 @@ import com.vinod.service.LoginService;
 @WebServlet("*.mobile")
 public class MobileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	final static Logger logger = Logger.getLogger(MobileController.class);   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -55,7 +57,7 @@ public class MobileController extends HttpServlet {
         LoginService lService = new LoginService();
         Login login=(Login) request.getSession().getAttribute("login");
         int id = login.getId();
-        System.out.println(uri);
+        logger.info(uri);
         String target = "home.jsp";
         if(uri.endsWith("getChatMessages.mobile"))
 		{
@@ -154,6 +156,7 @@ public class MobileController extends HttpServlet {
 	            	    
 					} catch (Exception e) {
 						try {
+							logger.error(e.getStackTrace());
 							lService.setErrorControl(request,target,login);
 							request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						} catch (Exception e1) {
@@ -301,6 +304,7 @@ public class MobileController extends HttpServlet {
 	    				request.setAttribute("chatId", chatId);
 					} catch (Exception e) {
 						try {
+							logger.error(e.getStackTrace());
 							lService.setErrorControl(request,target,login);
 							request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						} catch (Exception e1) {
@@ -446,11 +450,11 @@ public class MobileController extends HttpServlet {
 	    				request.setAttribute("chatId", chatId);
 					} catch (Exception e) {
 						try {
-							System.out.println("\n In controller Error:"+e.getMessage());
+							logger.error(e.getStackTrace());
 							target = lService.setErrorControl(request,target,login);
 							request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						} catch (Exception e1) {
-							System.out.println("\n In controller Error:"+e.getMessage());
+							logger.error(e1.getStackTrace());
 							request.setAttribute("error", "Please Login To Continue.");
 							target="home.jsp";
 						}

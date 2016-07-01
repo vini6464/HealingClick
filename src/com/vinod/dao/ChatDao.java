@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.vinod.exception.DaoException;
 import com.vinod.model.Chat;
 import com.vinod.model.Login;
@@ -18,7 +20,7 @@ import com.vinod.util.DBUtil;
 
 public class ChatDao {
 
-	
+	final static Logger logger = Logger.getLogger(ChatDao.class);
 
 	public int getChatID(Login login, long otherId, int type) throws DaoException {
 		int chatId = 0;
@@ -115,7 +117,7 @@ public class ChatDao {
 			}
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -151,7 +153,7 @@ public class ChatDao {
 			}
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -230,7 +232,7 @@ public class ChatDao {
 			}
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -262,7 +264,7 @@ public class ChatDao {
 
 			}catch (SQLException e) {
 				
-				System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+				logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 			}finally
 			{
 				DBUtil.releaseResource(rs);
@@ -300,7 +302,7 @@ public class ChatDao {
 			}
 		} catch (SQLException e) {
 		e.printStackTrace();
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -358,7 +360,7 @@ public class ChatDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -411,7 +413,7 @@ public class ChatDao {
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -476,7 +478,7 @@ public class ChatDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -507,7 +509,7 @@ public class ChatDao {
 
 			}catch (SQLException e) {
 				
-				System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+				logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 			}finally
 			{
 				DBUtil.releaseResource(rs);
@@ -558,7 +560,7 @@ public class ChatDao {
 			}
 		} catch (SQLException e) {
 		
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -596,7 +598,7 @@ public class ChatDao {
 			}
 		} catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -656,7 +658,7 @@ public class ChatDao {
 			
 		} catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -693,7 +695,7 @@ public class ChatDao {
 			}
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -733,7 +735,7 @@ public class ChatDao {
 			}
 		} catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -772,7 +774,7 @@ public class ChatDao {
 			}
 		} catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -831,7 +833,7 @@ public class ChatDao {
 			}
 		} catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -885,7 +887,7 @@ public class ChatDao {
 			}
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);

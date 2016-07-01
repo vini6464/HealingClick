@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.google.gson.Gson;
 
 import com.vinod.model.Chat;
@@ -38,6 +40,7 @@ public class ChatController extends HttpServlet {
         super();
        
     }
+    final static Logger logger = Logger.getLogger(ChatController.class);
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -56,7 +59,7 @@ public class ChatController extends HttpServlet {
 	private void doProcess(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		String uri=request.getRequestURI();
-		System.out.println(uri);
+		logger.info(uri);
         ChatService service = new ChatService();
         LoginService lService = new LoginService();
         String target = "home.jsp";
@@ -151,6 +154,7 @@ public class ChatController extends HttpServlet {
 	    				pw.print(list);
 	            		
 					}catch (Exception e) {
+						logger.error(e.getStackTrace());
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -180,6 +184,7 @@ public class ChatController extends HttpServlet {
 
 	    				pw.print(list);
 					} catch (Exception e) {
+						logger.error(e.getStackTrace());
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -203,6 +208,7 @@ public class ChatController extends HttpServlet {
 	    				pw.print(list);
 	            		
 					}catch (Exception e) {
+						logger.error(e.getStackTrace());
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -226,6 +232,7 @@ public class ChatController extends HttpServlet {
 	    				pw.print(list);
 	            		
 					}catch (Exception e) {
+						logger.error(e.getStackTrace());
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -252,6 +259,7 @@ public class ChatController extends HttpServlet {
 
 	    				pw.print(list);
 					} catch (Exception e) {
+						logger.error(e.getStackTrace());
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -275,6 +283,7 @@ public class ChatController extends HttpServlet {
 	    				pw.print(list);
 	            		
 					}catch (Exception e) {
+						logger.error(e.getStackTrace());
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -298,6 +307,7 @@ public class ChatController extends HttpServlet {
 	    				pw.print(list);
 	            		
 					}catch (Exception e) {
+						logger.error(e.getStackTrace());
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -363,6 +373,7 @@ public class ChatController extends HttpServlet {
 
 
 			} catch (Exception e) {
+				logger.error(e.getStackTrace());
 				PrintWriter pw = response.getWriter();
 				pw.print("empty");
 			}
@@ -424,6 +435,7 @@ public class ChatController extends HttpServlet {
 	            	    
 	            		
 					} catch (Exception e) {
+						logger.error(e.getStackTrace());
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -455,6 +467,7 @@ public class ChatController extends HttpServlet {
 	            	    
 	            		
 					} catch (Exception e) {
+						logger.error(e.getStackTrace());
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -520,6 +533,7 @@ public class ChatController extends HttpServlet {
 	            	    
 	            		
 					} catch (Exception e) {
+						logger.error(e.getStackTrace());
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -553,6 +567,7 @@ public class ChatController extends HttpServlet {
 	            	    
 	            		
 					} catch (Exception e) {
+						logger.error(e.getStackTrace());
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -671,6 +686,7 @@ public class ChatController extends HttpServlet {
 	            	    
 	            		
 					} catch (Exception e) {
+						logger.error(e.getStackTrace());
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}

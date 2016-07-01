@@ -1,12 +1,15 @@
 package com.vinod.listener;
 
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+
+import org.apache.log4j.PropertyConfigurator;
 
 import com.google.gson.Gson;
 import com.vinod.exception.DaoException;
@@ -56,7 +59,7 @@ public class Initialize implements ServletContextListener {
 	    	event.getServletContext().setAttribute("medicines", med);
 		} catch (Exception e1) {
 			
-			System.out.println("Error ehile setting Medicines:"+e1.getMessage());
+			System.out.println("Error while setting Medicines:"+e1.getMessage());
 		}
     	
     	
@@ -77,12 +80,16 @@ public class Initialize implements ServletContextListener {
 	    	Gson gson = new Gson();
 	    	String sym = gson.toJson(syms);
 	    	event.getServletContext().setAttribute("symptoms", sym);
-		} catch (DaoException e) {
-			System.out.println("Error ehile setting Symptoms:"+e.getMessage());
+		} catch (Exception e) {
+			System.out.println("Error while setting Symptoms:"+e.getMessage());
 		}
     	
     	
-    	
+    	ServletContext context = event.getServletContext();
+        String log4jConfigFile = context.getInitParameter("log4j-config-location");
+        String fullPath = context.getRealPath("") + File.separator + log4jConfigFile;
+         
+        PropertyConfigurator.configure(fullPath);
     	
     	
     }

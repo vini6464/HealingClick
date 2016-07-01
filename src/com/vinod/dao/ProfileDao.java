@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import com.vinod.exception.DaoException;
 import com.vinod.model.Doctor;
 import com.vinod.model.Patient;
@@ -11,7 +13,7 @@ import com.vinod.model.Pharmacy;
 import com.vinod.util.DBUtil;
 
 public class ProfileDao {
-
+	final static Logger logger = Logger.getLogger(ProfileDao.class);
 	public int updateDoctorProfile(Doctor doctor) throws DaoException {
 		int i=0;
 		Connection con = null;
@@ -47,7 +49,7 @@ public class ProfileDao {
 
 			i=ps.executeUpdate();
 		}catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			
@@ -94,7 +96,7 @@ public class ProfileDao {
 			i=ps.executeUpdate();
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			
@@ -132,7 +134,7 @@ public class ProfileDao {
 			i=ps.executeUpdate();
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			

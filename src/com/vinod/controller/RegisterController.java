@@ -18,6 +18,9 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
 import com.vinod.model.Doctor;
 import com.vinod.model.Log;
 import com.vinod.model.Patient;
@@ -38,6 +41,7 @@ public class RegisterController extends javax.servlet.http.HttpServlet implement
 javax.servlet.Servlet {
 	private static final long serialVersionUID = 1L;
 
+	final static Logger logger = Logger.getLogger(RegisterController.class);
 
 
 	/**
@@ -60,7 +64,7 @@ javax.servlet.Servlet {
 		RegisterService service = new RegisterService();
 		LoginService lService = new LoginService();
 		String uri=request.getRequestURI();
-		System.out.println(uri);
+		logger.info(uri);
 
 		if(uri.endsWith("home.register"))
 		{
@@ -130,7 +134,7 @@ javax.servlet.Servlet {
 					}
 
 				} catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}
@@ -172,7 +176,7 @@ javax.servlet.Servlet {
 						}
 					}
 				}catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}
@@ -214,7 +218,7 @@ javax.servlet.Servlet {
 						} 
 					}
 				} catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				} 
@@ -242,7 +246,7 @@ javax.servlet.Servlet {
 
 				}  catch (Exception e) {
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 				}
 			}
 
@@ -257,7 +261,7 @@ javax.servlet.Servlet {
 
 				}catch (Exception e) {
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 				}
 			}
 			if(id==3)
@@ -271,7 +275,7 @@ javax.servlet.Servlet {
 					pw.print(i);
 
 				} catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 				}
 			}
 		}
@@ -297,7 +301,7 @@ javax.servlet.Servlet {
 					pw.print(msg);
 
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 				}
 			}
 
@@ -316,7 +320,7 @@ javax.servlet.Servlet {
 					pw.print(msg);
 
 				}catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 				}
 			}
 			if(id==3)
@@ -334,7 +338,7 @@ javax.servlet.Servlet {
 					pw.print(msg);
 
 				} catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 				}
 			}
 		}
@@ -362,7 +366,7 @@ javax.servlet.Servlet {
 
 				} catch (Exception e) {
 
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 				} 
 			}
 
@@ -381,7 +385,7 @@ javax.servlet.Servlet {
 					pw.print(msg);
 
 				}  catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 				}
 			}
 			if(id==3)
@@ -399,7 +403,7 @@ javax.servlet.Servlet {
 					pw.print(msg);
 
 				} catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 				}
 			}
 		}
@@ -472,7 +476,7 @@ javax.servlet.Servlet {
 
 			}
 			catch (Exception e) {
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 			}
 			request.getRequestDispatcher("home.jsp").forward(request, response);
@@ -544,7 +548,7 @@ javax.servlet.Servlet {
 				}
 			}
 			catch (Exception e) {
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 
 			}
@@ -607,7 +611,7 @@ javax.servlet.Servlet {
 				}
 			}
 			catch (Exception e) {
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				request.setAttribute("error", e.getMessage());
 			}
 			request.getRequestDispatcher("home.jsp").forward(request, response);

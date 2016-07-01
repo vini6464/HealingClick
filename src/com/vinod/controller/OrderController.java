@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-
+import org.apache.log4j.Logger;
 
 import com.vinod.model.Doctor;
 import com.vinod.model.Log;
@@ -41,6 +41,7 @@ import com.vinod.service.PharmacyService;
 public class OrderController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	final static Logger logger = Logger.getLogger(OrderController.class);
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -61,7 +62,7 @@ public class OrderController extends HttpServlet {
 		String uri=request.getRequestURI();
 		OrderService service = new OrderService();
 		String target = "home.jsp";
-		System.out.println(uri);
+		logger.info(uri);
 		Login login1 = new Login();
 		try {
 			if(null == request.getSession().getAttribute("login")){  
@@ -1262,11 +1263,11 @@ public class OrderController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				target = lService.setErrorControl(request,target,login1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 			} catch (Exception e1) {
-				System.out.println("\n In controller Error:"+e1.getMessage());
+				logger.error(e1.getStackTrace());
 				request.setAttribute("error", "Please Login To Continue.");
 				target="home.jsp";
 			}

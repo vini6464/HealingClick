@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -42,6 +43,7 @@ import com.vinod.service.PharmacyService;
 public class PharmacyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	final static Logger logger = Logger.getLogger(PharmacyController.class);
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -68,7 +70,7 @@ public class PharmacyController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		String uri=request.getRequestURI();
-		System.out.println(uri);
+		logger.info(uri);
 		String target = "home.jsp";
 		Login login1 = new Login();
 		try {
@@ -535,11 +537,11 @@ public class PharmacyController extends HttpServlet {
 			e.printStackTrace();
 			
 			try {
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				target = lService.setErrorControl(request,target,login1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 			} catch (Exception e1) {
-				System.out.println("\n In controller Error:"+e1.getMessage());
+				logger.error(e1.getStackTrace());
 				request.setAttribute("error", "Please Login To Continue.");
 				target="home.jsp";
 			}

@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.log4j.Logger;
+
 import com.vinod.model.Community;
 import com.vinod.model.Doctor;
 import com.vinod.model.Login;
@@ -40,6 +42,7 @@ public class CommunityController extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    final static Logger logger = Logger.getLogger(CommunityController.class);
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -58,7 +61,7 @@ public class CommunityController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		
 		String uri=request.getRequestURI();
-		System.out.println(uri);
+		logger.info(uri);
 		CommunityService service = new CommunityService();
 		LoginService lService = new LoginService();
 
@@ -541,7 +544,7 @@ public class CommunityController extends HttpServlet {
 		} catch (Exception e) {
 			try {
 				
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				target = lService.setErrorControl(request,target,login1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 			} catch (Exception e1) {

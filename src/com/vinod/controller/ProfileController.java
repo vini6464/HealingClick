@@ -11,6 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
 import com.vinod.model.Doctor;
 import com.vinod.model.Login;
 import com.vinod.model.Patient;
@@ -26,6 +29,7 @@ import com.vinod.service.ProfileService;
 public class ProfileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	final static Logger logger = Logger.getLogger(ProfileController.class);
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -51,7 +55,7 @@ public class ProfileController extends HttpServlet {
 	private void doProcess(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String uri=request.getRequestURI();
-		System.out.println(uri);
+		logger.info(uri);
 		String target = "home.jsp";
 		Login login1 = new Login();
 		try {
@@ -874,11 +878,11 @@ public class ProfileController extends HttpServlet {
 
 		} catch (Exception e) {
 			try {
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				target = lService.setErrorControl(request,target,login1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 			} catch (Exception e1) {
-				System.out.println("\n In controller Error:"+e1.getMessage());
+				logger.error(e1.getStackTrace());
 				request.setAttribute("error", "Please Login To Continue.");
 				target="home.jsp";
 			}

@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import org.apache.log4j.Logger;
+
 import com.vinod.exception.DaoException;
 import com.vinod.model.Appointment;
 import com.vinod.model.Doctor;
@@ -40,6 +42,8 @@ import com.vinod.service.PatientService;
 @MultipartConfig
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	final static Logger logger = Logger.getLogger(LoginController.class);
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -85,7 +89,7 @@ public class LoginController extends HttpServlet {
 		LoginService service = new LoginService();
 		PatientService pService = new PatientService();
 		String target = "home.jsp";
-		System.out.println(uri);
+		logger.info(uri);
 		if(uri.endsWith("signout.login"))
 		{
 			try {
@@ -151,7 +155,7 @@ public class LoginController extends HttpServlet {
 
 
 				}}catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					request.setAttribute("error", "Please Login To Continue.");
 					target="home.jsp";
 				}
@@ -205,7 +209,7 @@ public class LoginController extends HttpServlet {
 					service.setLastActive(login);
 					service.changeNotificationImage(login,imagePath);
 				} catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}
@@ -292,7 +296,7 @@ public class LoginController extends HttpServlet {
 					service.setLastActive(login);
 					service.changeNotificationImage(login,imagePath);
 				} catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					request.setAttribute("error", "Please Login To Continue.");
 					target="home.jsp";
 				}
@@ -797,7 +801,7 @@ public class LoginController extends HttpServlet {
 					}
 				}
 			} catch (Exception e1) {
-				System.out.println("\n In controller Error:"+e1.getMessage());
+				logger.error(e1.getStackTrace());
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="home.jsp";
 			}
@@ -878,7 +882,7 @@ public class LoginController extends HttpServlet {
 				 }
 				 pw.print(msg);
 				}catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					 pw.print(msg);
 					
 				}
@@ -939,7 +943,7 @@ public class LoginController extends HttpServlet {
 
 				}
 			} catch (Exception e) {
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				request.setAttribute("error", "Please Login To Continue.");
 				target="home.jsp";
 			}
@@ -1036,7 +1040,7 @@ public class LoginController extends HttpServlet {
 					}
 
 				}} catch (Exception e) {
-					System.out.println("\n In controller Error:"+e.getMessage());
+					logger.error(e.getStackTrace());
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 
 import com.vinod.model.Comment;
 import com.vinod.model.Doctor;
@@ -37,6 +38,8 @@ public class SupportController extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    final static Logger logger = Logger.getLogger(SupportController.class);
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -56,7 +59,7 @@ public class SupportController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		String uri=request.getRequestURI();
 		String target = "home.jsp";
-		System.out.println(uri);
+		logger.info(uri);
 		
 		Login login1 = new Login();
 		try {
@@ -327,10 +330,11 @@ public class SupportController extends HttpServlet {
 			
 		} catch (Exception e) {
 			try {
-				System.out.println("In Support Controller : "+e.getMessage());
+				logger.error(e.getStackTrace());
 				target = lService.setErrorControl(request,target,login1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 			} catch (Exception e1) {
+				logger.error(e1.getStackTrace());
 				request.setAttribute("error", "Please Login To Continue.");
 				target="home.jsp";
 			}

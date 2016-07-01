@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 
 import com.vinod.model.Appointment;
 import com.vinod.model.Doctor;
@@ -41,6 +42,7 @@ public class HomeController extends HttpServlet {
 		
 	}
 
+	final static Logger logger = Logger.getLogger(HomeController.class);
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -59,7 +61,7 @@ public class HomeController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException{
 
 		String uri=request.getRequestURI();
-		System.out.println(uri);
+		logger.info(uri);
 		String target = "home.jsp";
 		try {
 			if(null == request.getSession().getAttribute("login")){  
@@ -448,7 +450,7 @@ public class HomeController extends HttpServlet {
 				request.setAttribute("pharmacy", pharmacy);
 				target="pharmacyhome.jsp";
 			} catch (Exception e1) {
-				System.out.println("\n In controller Error:"+e1.getMessage());
+				logger.error(e1.getStackTrace());
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="home.jsp";
 			}

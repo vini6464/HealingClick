@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.vinod.exception.DaoException;
 import com.vinod.model.Login;
 import com.vinod.model.Medicine;
@@ -14,7 +16,7 @@ import com.vinod.model.Order;
 import com.vinod.util.DBUtil;
 
 public class PharmacyDao {
-
+	final static Logger logger = Logger.getLogger(PharmacyDao.class);
 	public Order getOrderById(int oId) throws DaoException  {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -59,7 +61,7 @@ public class PharmacyDao {
 		} 
 		 catch (SQLException e) {
 			 
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		} finally
 		{
 			DBUtil.releaseResource(rs);
@@ -96,7 +98,7 @@ public class PharmacyDao {
 			}
 		} 
 		 catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		} finally
 		{
 			DBUtil.releaseResource(rs);
@@ -123,7 +125,7 @@ public class PharmacyDao {
 		    System.out.println("Successfully Delivery Charge Updated : "+i);
 		}catch (SQLException e) {
 			
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			
@@ -156,7 +158,7 @@ public class PharmacyDao {
 				medicines.add(medicine);
 			}
 		}  catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -178,7 +180,7 @@ public class PharmacyDao {
 			ps.setInt(1, login.getId());
 			i = ps.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();		}finally
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();		}finally
 			{
 				DBUtil.releaseResource(rs);
 				DBUtil.releaseResource(ps);
@@ -211,7 +213,7 @@ public class PharmacyDao {
 	            }
 	        }
 		} catch (SQLException e) {
-			System.out.println("\n In DAO Error:"+e.getMessage()); throw new DaoException();		}finally
+			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();		}finally
 			{
 				DBUtil.releaseResource(rs);
 				DBUtil.releaseResource(ps);

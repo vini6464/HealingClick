@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.log4j.Logger;
+
 import com.vinod.model.Comment;
 import com.vinod.model.Doctor;
 import com.vinod.model.ForumPost;
@@ -43,6 +45,7 @@ public class ForumController extends HttpServlet {
 
 	}
 
+	final static Logger logger = Logger.getLogger(ForumController.class);
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -60,7 +63,7 @@ public class ForumController extends HttpServlet {
 	private void doProcess(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String uri=request.getRequestURI();
-		System.out.println(uri);
+		logger.info(uri);
 		String target = "home.jsp";
 
 		
@@ -765,7 +768,7 @@ public class ForumController extends HttpServlet {
 			
 		} catch (Exception e) {
 			try {
-				System.out.println("\n In controller Error:"+e.getMessage());
+				logger.error(e.getStackTrace());
 				target = lService.setErrorControl(request,target,login1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 			} catch (Exception e1) {
