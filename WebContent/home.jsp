@@ -697,7 +697,7 @@ if it's not present, don't show loader */
 
 					<ul>
 						<li style="color: black;">Enter Your 6 digits OTP Sent To
-							Your Phone <br> <span></span>
+							Your Mobile <br> <span id="mobilo"></span>
 						</li>
 					</ul>
 

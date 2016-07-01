@@ -11,6 +11,7 @@ function doctor()
 	if(!user1.test(document.form.username.value))
 	{
 		$("#user").show();
+		document.form.username.focus();
 		var span = document.getElementById("user");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -27,6 +28,7 @@ function doctor()
 	if(document.form.gender.value == 0)
 	{
 		$("#gender").show();
+		document.form.gender.focus();
 		var span = document.getElementById("gender");
 		var txt = document.createTextNode("Please select Gender");
 		span.innerText = txt.textContent;
@@ -43,6 +45,7 @@ function doctor()
 	if(document.form.bloodgroup.value == 0)
 	{
 		$("#bloodgroup").show();
+		document.form.bloodgroup.focus();
 		var span = document.getElementById("bloodgroup");
 		var txt = document.createTextNode("Please select Bloodgroup");
 		span.innerText = txt.textContent;
@@ -60,6 +63,7 @@ function doctor()
 	if(!alphanumeric.test(document.form.qualification.value))
 	{
 		$("#qualification").show();
+		document.form.qualification.focus();
 		var span = document.getElementById("qualification");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -76,6 +80,7 @@ function doctor()
 	if(!alphanumeric.test(document.form.speciality.value))
 	{
 		$("#speciality").show();
+		document.form.speciality.focus();
 		var span = document.getElementById("speciality");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -91,6 +96,7 @@ function doctor()
 	if(!alphanumeric.test(document.form.worklocation.value))
 	{
 		$("#worklocation").show();
+		document.form.worklocation.focus();
 		var span = document.getElementById("worklocation");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -106,6 +112,7 @@ function doctor()
 	if(!alphanumeric.test(document.form.address1.value))
 	{
 		$("#address1").show();
+		document.form.address1.focus();
 		var span = document.getElementById("address1");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -121,6 +128,7 @@ function doctor()
 	if(!alphanumeric.test(document.form.address2.value))
 	{
 		$("#address2").show();
+		document.form.address2.focus();
 		var span = document.getElementById("address2");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -138,6 +146,7 @@ function doctor()
 	if(!alphanumeric.test(document.form.landmark.value))
 	{
 		$("#landmark").show();
+		document.form.landmark.focus();
 		var span = document.getElementById("landmark");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -152,6 +161,7 @@ function doctor()
 	if(document.form.country.value == 0)
 	{
 		$("#country1").show();
+		document.form.country.focus();
 		var span = document.getElementById("country1");
 		var txt = document.createTextNode("Please Select Country");
 		span.innerText = txt.textContent;
@@ -168,6 +178,7 @@ function doctor()
 	if(document.form.state.value == 0)
 	{
 		$("#state1").show();
+		document.form.state.focus();
 		var span = document.getElementById("state1");
 		var txt = document.createTextNode("Please Select State");
 		span.innerText = txt.textContent;
@@ -185,6 +196,7 @@ function doctor()
 	if(!alphas.test(document.form.city.value))
 	{
 		$("#city1").show();
+		document.form.city.focus();
 		var span = document.getElementById("city1");
 		var txt = document.createTextNode("Please Select City");
 		span.innerText = txt.textContent;
@@ -201,6 +213,7 @@ function doctor()
 	if(!pin.test(document.form.pincode.value))
 	{
 		$("#pincode").show();
+		document.form.pincode.focus();
 		var span = document.getElementById("pincode");
 		var txt = document.createTextNode("Please Enter only 6 Digits");
 		span.innerText = txt.textContent;
@@ -248,6 +261,7 @@ function postdoctor()
 	if(!alpha.test(document.form.firstname.value))
 	{
 		$("#firstname").show();
+		document.form.firstname.focus();
 		var span = document.getElementById("firstname");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -263,6 +277,7 @@ function postdoctor()
 	if(!alpha.test(document.form.lastname.value))
 	{
 		$("#lastname").show();
+		document.form.lastname.focus();
 		var span = document.getElementById("lastname");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -279,6 +294,7 @@ function postdoctor()
 	if(document.form.gender.value == 0)
 	{
 		$("#gender").show();
+		document.form.gender.focus();
 		var span = document.getElementById("gender");
 		var txt = document.createTextNode("Please select Gender");
 		span.innerText = txt.textContent;
@@ -293,6 +309,7 @@ function postdoctor()
 	if(document.form.bloodgroup.value == 0)
 	{
 		$("#bloodgroup").show();
+		document.form.bloodgroup.focus();
 		var span = document.getElementById("bloodgroup");
 		var txt = document.createTextNode("Please select Bloodgroup");
 		span.innerText = txt.textContent;
@@ -307,6 +324,7 @@ function postdoctor()
 	if(!alphanumeric.test(document.form.qualification.value))
 	{
 		$("#qualification").show();
+		document.form.qualification.focus();
 		var span = document.getElementById("qualification");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -322,6 +340,7 @@ function postdoctor()
 	if(!alphanumeric.test(document.form.speciality.value))
 	{
 		$("#speciality").show();
+		document.form.speciality.focus();
 		var span = document.getElementById("speciality");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -336,6 +355,7 @@ function postdoctor()
 	if(!alphanumeric.test(document.form.worklocation.value))
 	{
 		$("#worklocation").show();
+		document.form.worklocation.focus();
 		var span = document.getElementById("worklocation");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -350,6 +370,7 @@ function postdoctor()
 	if(!alphanumeric.test(document.form.address1.value))
 	{
 		$("#address1").show();
+		document.form.address1.focus();
 		var span = document.getElementById("address1");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -364,6 +385,7 @@ function postdoctor()
 	if(!alphanumeric.test(document.form.address2.value))
 	{
 		$("#address2").show();
+		document.form.address2.focus();
 		var span = document.getElementById("address2");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -380,6 +402,7 @@ function postdoctor()
 	if(!alphanumeric.test(document.form.landmark.value))
 	{
 		$("#landmark").show();
+		document.form.landmark.focus();
 		var span = document.getElementById("landmark");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -394,6 +417,7 @@ function postdoctor()
 	if(document.form.country.value == 0)
 	{
 		$("#country1").show();
+		document.form.country.focus();
 		var span = document.getElementById("country1");
 		var txt = document.createTextNode("Please Select Country");
 		span.innerText = txt.textContent;
@@ -410,6 +434,7 @@ function postdoctor()
 	if(document.form.state.value == 0)
 	{
 		$("#state1").show();
+		document.form.state.focus();
 		var span = document.getElementById("state1");
 		var txt = document.createTextNode("Please Select State");
 		span.innerText = txt.textContent;
@@ -427,6 +452,7 @@ function postdoctor()
 	if(!alphas.test(document.form.city.value))
 	{
 		$("#city1").show();
+		document.form.city.focus();
 		var span = document.getElementById("city1");
 		var txt = document.createTextNode("Please Select City");
 		span.innerText = txt.textContent;
@@ -443,6 +469,7 @@ function postdoctor()
 	if(!pin.test(document.form.pincode.value))
 	{
 		$("#pincode").show();
+		document.form.pincode.focus();
 		var span = document.getElementById("pincode");
 		var txt = document.createTextNode("Please Enter only 6 Digits");
 		span.innerText = txt.textContent;
@@ -459,6 +486,7 @@ function postdoctor()
 	if(!alphanumeric.test(document.form.aboutme.value))
 	{
 		$("#aboutme").show();
+		document.form.aboutme.focus();
 		var span = document.getElementById("aboutme");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -489,6 +517,7 @@ function patient()
 	if(!user1.test(document.form.username.value))
 	{
 		$("#user").show();
+		document.form.username.focus();
 		var span = document.getElementById("user");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -503,6 +532,7 @@ function patient()
 	if(document.form.gender.value == 0)
 	{
 		$("#gender").show();
+		document.form.gender.focus();
 		var span = document.getElementById("gender");
 		var txt = document.createTextNode("Please select Gender");
 		span.innerText = txt.textContent;
@@ -526,6 +556,7 @@ function patient()
 	if(!alphanumeric.test(document.form.address1.value))
 	{
 		$("#address1").show();
+		document.form.address1.focus();
 		var span = document.getElementById("address1");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -540,6 +571,7 @@ function patient()
 	if(!alphanumeric.test(document.form.address2.value))
 	{
 		$("#address2").show();
+		document.form.address2.focus();
 		var span = document.getElementById("address2");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -556,6 +588,7 @@ function patient()
 	if(!alphanumeric.test(document.form.landmark.value))
 	{
 		$("#landmark").show();
+		document.form.landmark.focus();
 		var span = document.getElementById("landmark");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -570,6 +603,7 @@ function patient()
 	if(document.form.country.value == 0)
 	{
 		$("#country1").show();
+		document.form.country.focus();
 		var span = document.getElementById("country1");
 		var txt = document.createTextNode("Please Select Country");
 		span.innerText = txt.textContent;
@@ -586,6 +620,7 @@ function patient()
 	if(document.form.state.value == 0)
 	{
 		$("#state1").show();
+		document.form.state.focus();
 		var span = document.getElementById("state1");
 		var txt = document.createTextNode("Please Select State");
 		span.innerText = txt.textContent;
@@ -603,6 +638,7 @@ function patient()
 	if(!alphas.test(document.form.city.value))
 	{
 		$("#city1").show();
+		document.form.city.focus();
 		var span = document.getElementById("city1");
 		var txt = document.createTextNode("Please Select City");
 		span.innerText = txt.textContent;
@@ -619,6 +655,7 @@ function patient()
 	if(!pin.test(document.form.pincode.value))
 	{
 		$("#pincode").show();
+		document.form.pincode.focus();
 		var span = document.getElementById("pincode");
 		var txt = document.createTextNode("Please Enter only 6 Digits");
 		span.innerText = txt.textContent;
@@ -690,6 +727,7 @@ function postpatient()
 	if(!alpha.test(document.form.firstname.value))
 	{
 		$("#firstname").show();
+		document.form.firstname.focus();
 		var span = document.getElementById("firstname");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -705,6 +743,7 @@ function postpatient()
 	if(!alpha.test(document.form.lastname.value))
 	{
 		$("#lastname").show();
+		document.form.lastname.focus();
 		var span = document.getElementById("lastname");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -720,6 +759,7 @@ function postpatient()
 	if(document.form.gender.value == 0)
 	{
 		$("#gender").show();
+		document.form.gender.focus();
 		var span = document.getElementById("gender");
 		var txt = document.createTextNode("Please select Gender");
 		span.innerText = txt.textContent;
@@ -734,6 +774,7 @@ function postpatient()
 	if(document.form.bloodgroup.value == 0)
 	{
 		$("#bloodgroup").show();
+		document.form.bloodgroup.focus();
 		var span = document.getElementById("bloodgroup");
 		var txt = document.createTextNode("Please select Bloodgroup");
 		span.innerText = txt.textContent;
@@ -750,6 +791,7 @@ function postpatient()
 	if(!alphanumeric.test(document.form.address1.value))
 	{
 		$("#address1").show();
+		document.form.address1.focus();
 		var span = document.getElementById("address1");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -764,6 +806,7 @@ function postpatient()
 	if(!alphanumeric.test(document.form.address2.value))
 	{
 		$("#address2").show();
+		document.form.address2.focus();
 		var span = document.getElementById("address2");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -780,6 +823,7 @@ function postpatient()
 	if(!alphanumeric.test(document.form.landmark.value))
 	{
 		$("#landmark").show();
+		document.form.landmark.focus();
 		var span = document.getElementById("landmark");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -794,6 +838,7 @@ function postpatient()
 	if(document.form.country.value == 0)
 	{
 		$("#country1").show();
+		document.form.country.focus();
 		var span = document.getElementById("country1");
 		var txt = document.createTextNode("Please Select Country");
 		span.innerText = txt.textContent;
@@ -810,6 +855,7 @@ function postpatient()
 	if(document.form.state.value == 0)
 	{
 		$("#state1").show();
+		document.form.state.focus();
 		var span = document.getElementById("state1");
 		var txt = document.createTextNode("Please Select State");
 		span.innerText = txt.textContent;
@@ -827,6 +873,7 @@ function postpatient()
 	if(!alphas.test(document.form.city.value))
 	{
 		$("#city1").show();
+		document.form.city.focus();
 		var span = document.getElementById("city1");
 		var txt = document.createTextNode("Please Select City");
 		span.innerText = txt.textContent;
@@ -843,6 +890,7 @@ function postpatient()
 	if(!pin.test(document.form.pincode.value))
 	{
 		$("#pincode").show();
+		document.form.pincode.focus();
 		var span = document.getElementById("pincode");
 		var txt = document.createTextNode("Please Enter only 6 Digits");
 		span.innerText = txt.textContent;
@@ -858,6 +906,7 @@ function postpatient()
 	if(!number.test(document.form.contact1.value))
 	{
 		$("#contact1").show();
+		document.form.contact1.focus();
 		var span = document.getElementById("contact1");
 		var txt = document.createTextNode("Please Enter only 10 Digits");
 		span.innerText = txt.textContent;
@@ -873,6 +922,7 @@ function postpatient()
 	if(!number.test(document.form.contact2.value))
 	{
 		$("#contact2").show();
+		document.form.contact2.focus();
 		var span = document.getElementById("contact2");
 		var txt = document.createTextNode("Please Enter only 10 Digits");
 		span.innerText = txt.textContent;
@@ -888,6 +938,7 @@ function postpatient()
 	if(!alphanumeric.test(document.form.aboutme.value))
 	{
 		$("#aboutme").show();
+		document.form.aboutme.focus();
 		var span = document.getElementById("aboutme");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -919,6 +970,7 @@ function pharmacy1()
 	if(!user1.test(document.form.username.value))
 	{
 		$("#user").show();
+		document.form.username.focus();
 		var span = document.getElementById("user");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -951,6 +1003,7 @@ function pharmacy1()
 	if(!alphas.test(document.form.pharmacy.value))
 	{
 		$("#pharmacy").show();
+		document.form.pharmacy.focus();
 		var span = document.getElementById("pharmacy");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -967,6 +1020,7 @@ function pharmacy1()
 	if(!alphanumeric.test(document.form.address1.value))
 	{
 		$("#address1").show();
+		document.form.address1.focus();
 		var span = document.getElementById("address1");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -981,6 +1035,7 @@ function pharmacy1()
 	if(!alphanumeric.test(document.form.address2.value))
 	{
 		$("#address2").show();
+		document.form.address2.focus();
 		var span = document.getElementById("address2");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -997,6 +1052,7 @@ function pharmacy1()
 	if(!alphanumeric.test(document.form.landmark.value))
 	{
 		$("#landmark").show();
+		document.form.landmark.focus();
 		var span = document.getElementById("landmark");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -1011,6 +1067,7 @@ function pharmacy1()
 	if(document.form.country.value == 0)
 	{
 		$("#country1").show();
+		document.form.country.focus();
 		var span = document.getElementById("country1");
 		var txt = document.createTextNode("Please Select Country");
 		span.innerText = txt.textContent;
@@ -1027,6 +1084,7 @@ function pharmacy1()
 	if(document.form.state.value == 0)
 	{
 		$("#state1").show();
+		document.form.state.focus();
 		var span = document.getElementById("state1");
 		var txt = document.createTextNode("Please Select State");
 		span.innerText = txt.textContent;
@@ -1044,6 +1102,7 @@ function pharmacy1()
 	if(!alphas.test(document.form.city.value))
 	{
 		$("#city1").show();
+		document.form.city.focus();
 		var span = document.getElementById("city1");
 		var txt = document.createTextNode("Please Select City");
 		span.innerText = txt.textContent;
@@ -1060,6 +1119,7 @@ function pharmacy1()
 	if(!pin.test(document.form.pincode.value))
 	{
 		$("#pincode").show();
+		document.form.pincode.focus();
 		var span = document.getElementById("pincode");
 		var txt = document.createTextNode("Please Enter only 6 Digits");
 		span.innerText = txt.textContent;
@@ -1090,6 +1150,7 @@ function pharmacy1()
 	if(!alphas.test(document.form.licensedto.value))
 	{
 		$("#licensedto").show();
+		document.form.licensedto.focus();
 		var span = document.getElementById("licensedto");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -1104,6 +1165,7 @@ function pharmacy1()
 	if(!alphas.test(document.form.proprietorname.value))
 	{
 		$("#proprietorname").show();
+		document.form.proprietorname.focus();
 		var span = document.getElementById("proprietorname");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -1119,6 +1181,7 @@ function pharmacy1()
 	if(!alphanumeric.test(document.form.proprietoraddress.value))
 	{
 		$("#proprietoraddress").show();
+		document.form.proprietoraddress.focus();
 		var span = document.getElementById("proprietoraddress");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -1175,6 +1238,7 @@ function postpharmacy()
 	if(!alphas.test(document.form.pharmacy.value))
 	{
 		$("#pharmacy").show();
+		document.form.pharmacy.focus();
 		var span = document.getElementById("pharmacy");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -1192,6 +1256,7 @@ function postpharmacy()
 	if(!alphanumeric.test(document.form.address1.value))
 	{
 		$("#address1").show();
+		document.form.address1.focus();
 		var span = document.getElementById("address1");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -1206,6 +1271,7 @@ function postpharmacy()
 	if(!alphanumeric.test(document.form.address2.value))
 	{
 		$("#address2").show();
+		document.form.address2.focus();
 		var span = document.getElementById("address2");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -1222,6 +1288,7 @@ function postpharmacy()
 	if(!alphanumeric.test(document.form.landmark.value))
 	{
 		$("#landmark").show();
+		document.form.landmark.focus();
 		var span = document.getElementById("landmark");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -1237,6 +1304,7 @@ function postpharmacy()
 	{
 		
 		$("#country1").show();
+		document.form.country.focus();
 		var span = document.getElementById("country1");
 		var txt = document.createTextNode("Please Select Country");
 		span.innerText = txt.textContent;
@@ -1253,6 +1321,7 @@ function postpharmacy()
 	if(document.form.state.value == 0)
 	{
 		$("#state1").show();
+		document.form.state.focus();
 		var span = document.getElementById("state1");
 		var txt = document.createTextNode("Please Select State");
 		span.innerText = txt.textContent;
@@ -1270,6 +1339,7 @@ function postpharmacy()
 	if(!alphas.test(document.form.city.value))
 	{
 		$("#city1").show();
+		document.form.city.focus();
 		var span = document.getElementById("city1");
 		var txt = document.createTextNode("Please Select City");
 		span.innerText = txt.textContent;
@@ -1286,6 +1356,7 @@ function postpharmacy()
 	if(!pin.test(document.form.pincode.value))
 	{
 		$("#pincode").show();
+		document.form.pincode.focus();
 		var span = document.getElementById("pincode");
 		var txt = document.createTextNode("Please Enter only 6 Digits");
 		span.innerText = txt.textContent;
@@ -1301,6 +1372,7 @@ function postpharmacy()
 	if(!alphanumeric.test(document.form.aboutme.value))
 	{
 		$("#aboutme").show();
+		document.form.aboutme.focus();
 		var span = document.getElementById("aboutme");
 		var txt = document.createTextNode("Please Enter only Alphabets and Numbers");
 		span.innerText = txt.textContent;
@@ -1332,6 +1404,7 @@ function home()
 	if(!alpha.test(document.form1.firstname.value))
 	{
 		$("#firstname").show();
+		document.form1.firstname.focus();
 		var span = document.getElementById("firstname");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -1345,6 +1418,7 @@ function home()
 	if(!alpha.test(document.form1.lastname.value))
 	{
 		$("#lastname").show();
+		document.form1.lastname.focus();
 		var span = document.getElementById("lastname");
 		var txt = document.createTextNode("Please Enter only Alphabets");
 		span.innerText = txt.textContent;
@@ -1360,6 +1434,7 @@ function home()
 	if(!mail.test(document.form1.email.value))
 	{
 		$("#mail").show();
+		document.form1.email.focus();
 		var span = document.getElementById("mail");
 		var txt = document.createTextNode("Please Enter Email Properly");
 		span.innerText = txt.textContent;
@@ -1374,7 +1449,8 @@ function home()
 
 	if(!number.test(document.form1.mobile.value))
 	{
-
+		$("#phone").show();
+		document.form1.mobile.focus();
 		var span = document.getElementById("phone");
 		var txt = document.createTextNode("Please Enter only 10 Digits");
 		span.innerText = txt.textContent;
@@ -1465,6 +1541,7 @@ function checkName(type)
 		if(!alpha.test(document.form1.firstname.value))
 		{		
 			$("#firstname").show();
+			
 			var span = document.getElementById("firstname");
 			var txt = document.createTextNode("Please Enter only Alphabets");
 			span.innerText = txt.textContent;
@@ -1482,6 +1559,7 @@ function checkName(type)
 		if(!alpha.test(document.form1.lastname.value))
 		{		
 			$("#lastname").show();
+			
 			var span = document.getElementById("lastname");
 			var txt = document.createTextNode("Please Enter only Alphabets");
 			span.innerText = txt.textContent;

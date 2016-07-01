@@ -350,6 +350,7 @@ function checkUserName(id)
 				$("#user1").html("Not Available");
 				$("#user1").data("value",1);
 				$("#user1").css({ "color": 'red'});
+				document.form.username.focus();
 				
 			}	
 			
@@ -398,6 +399,7 @@ function checkPhone()
 				{
 				$("#phone1").show();
 				$("#phone1").html(result);
+				document.form1.mobile.focus();
 				}
 			else
 				{
@@ -438,6 +440,7 @@ function checkEmail()
 			
 			if(result!="")
 				{
+				document.form1.email.focus();
 				$("#mail1").show();
 				$("#mail1").html(result);
 				}
@@ -1325,6 +1328,9 @@ function resetPassword()
 				{
 					mobile = mobEmail;
 					$("#changePassword").modal('hide');	
+					var span = document.getElementById("mobilo");
+					var txt = document.createTextNode(mobile);
+					span.innerText = txt.textContent;
 					$("#checkOTP").modal();	
 				}
 
