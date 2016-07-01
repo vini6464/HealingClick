@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.logging.Level;
 
 import org.apache.log4j.Logger;
 
@@ -70,7 +71,7 @@ public class AdminDao {
 			}
 		} catch (SQLException e) {
 			
-			logger.error("In DAO:"+e.getStackTrace());
+			logger.error(Level.SEVERE,e);
 			throw new DaoException();
 		}finally
 		{
@@ -102,7 +103,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -133,7 +134,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -164,7 +165,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -195,7 +196,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -226,7 +227,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -257,7 +258,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -288,7 +289,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -319,7 +320,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -350,7 +351,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -386,7 +387,7 @@ public class AdminDao {
 				doctors.add(doctor);
 			}
 		}catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -422,7 +423,7 @@ public class AdminDao {
 				patients.add(patient);
 			}
 		}catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -459,7 +460,7 @@ public class AdminDao {
 				pharmacies.add(pharmacy);
 			}
 		}catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -487,7 +488,7 @@ public class AdminDao {
 		} 
 		 catch (SQLException e) {
 			 System.out.println(e.getMessage());
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -528,7 +529,7 @@ public class AdminDao {
 		} 
 		 catch (SQLException e) {
 			 e.printStackTrace();
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			
@@ -577,7 +578,7 @@ public class AdminDao {
 			System.out.println(query);
 		}catch (SQLException e) {
 			e.printStackTrace();
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -611,7 +612,7 @@ public class AdminDao {
 				pharmacies.add(pharmacy);
 			}
 		}  catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -645,7 +646,7 @@ public class AdminDao {
 				doctors.add(doctor);
 			}
 		}  catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -682,7 +683,7 @@ public class AdminDao {
 			}
 		}  catch (SQLException e) {
 			e.printStackTrace();
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -716,7 +717,7 @@ public class AdminDao {
 				doctors.add(doctor);
 			}
 		}  catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -747,7 +748,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -780,7 +781,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -811,7 +812,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -842,7 +843,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -873,7 +874,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -904,7 +905,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -935,7 +936,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -969,7 +970,7 @@ public class AdminDao {
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -997,7 +998,7 @@ public class AdminDao {
 		} 
 		 catch (SQLException e) {
 			 System.out.println(e.getMessage());
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -1039,7 +1040,7 @@ public class AdminDao {
 			}
 		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -1089,7 +1090,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -1115,7 +1116,7 @@ public class AdminDao {
 		} 
 		 catch (SQLException e) {
 			 System.out.println(e.getMessage());
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -1152,7 +1153,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -1190,7 +1191,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -1227,7 +1228,7 @@ public class AdminDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);

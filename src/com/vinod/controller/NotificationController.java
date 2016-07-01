@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -112,7 +113,7 @@ public class NotificationController extends HttpServlet {
 					
 					pw.print(msg);
 				} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(e);
 					pw.print(msg);
 				}
 				
@@ -142,7 +143,7 @@ public class NotificationController extends HttpServlet {
 					 
 					 pw.print(msg);
 				} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					pw.print(msg);
 				}
 				
@@ -172,7 +173,7 @@ public class NotificationController extends HttpServlet {
 					 }
 					 pw.print(msg);
 				} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					pw.print(msg);
 				}
 				
@@ -201,7 +202,7 @@ public class NotificationController extends HttpServlet {
 					 
 					 
 				} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					
 				}
 				
@@ -232,7 +233,7 @@ public class NotificationController extends HttpServlet {
 					
 					 pw.print(msg);
 				} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					msg = 0;
 					pw.print(msg);
 				}
@@ -306,7 +307,7 @@ public class NotificationController extends HttpServlet {
 					
 					pw.print(msg);
 				} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					pw.print(msg);
 				}
 				
@@ -338,7 +339,7 @@ public class NotificationController extends HttpServlet {
 				
 
 			}  catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				target = "home.jsp";
 			}
 			request.getRequestDispatcher(target).forward(request, response);
@@ -627,7 +628,7 @@ public class NotificationController extends HttpServlet {
 				
 			}
 	        } catch (Exception e) {
-	        	logger.error(e.getStackTrace());
+	        	logger.error(Level.SEVERE,e);
 	        	PrintWriter pw = response.getWriter();
 				pw.print("empty");
 			}
@@ -690,7 +691,7 @@ public class NotificationController extends HttpServlet {
 						msg = "<input class='btn btn-info btn-block btn-sm' style='font-weight: bold; width: %;' type=button value=Delivered onclick=deliverOrder("+oId+")>";
 						pw.print(msg);
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						PrintWriter pw1 = response.getWriter();
 	    				pw1.print("empty");
 					}
@@ -786,7 +787,7 @@ public class NotificationController extends HttpServlet {
 
 						pw.print(msg);
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 	    				pw.print(0);
 					}
 					
@@ -830,7 +831,7 @@ public class NotificationController extends HttpServlet {
 				pw.print("clear");	
 
 			}  catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				PrintWriter pw = response.getWriter();
 				pw.print("empty");
 			}
@@ -848,7 +849,7 @@ public class NotificationController extends HttpServlet {
 				pw.print("clear");	
 
 			}  catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				PrintWriter pw = response.getWriter();
 				pw.print("empty");
 			}
@@ -927,7 +928,7 @@ public class NotificationController extends HttpServlet {
 				pw.print(1);	
 
 			}  catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				PrintWriter pw = response.getWriter();
 				pw.print("empty");
 			}
@@ -971,7 +972,7 @@ public class NotificationController extends HttpServlet {
 				
 
 			}  catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				PrintWriter pw = response.getWriter();
 				pw.print("empty");
 			}
@@ -990,7 +991,7 @@ public class NotificationController extends HttpServlet {
 				post.setContent(content);
 				service.saveSupport(post);
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1006,7 +1007,7 @@ public class NotificationController extends HttpServlet {
 				int privacyValue = Integer.parseInt(request.getParameter("privacyValue"));
 				service.savePrivacy(login , privacyValue);
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1029,7 +1030,7 @@ public class NotificationController extends HttpServlet {
 
 				pw.print(symptomsList);	
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1049,7 +1050,7 @@ public class NotificationController extends HttpServlet {
 
 				pw.print(medicinesList);	
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1078,7 +1079,7 @@ public class NotificationController extends HttpServlet {
 
 				pw.print(medicinesList);	
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1129,7 +1130,7 @@ public class NotificationController extends HttpServlet {
 
 				pw.print(medicinesList);	
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1181,7 +1182,7 @@ public class NotificationController extends HttpServlet {
 
 				pw.print(medicinesList);	
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1232,7 +1233,7 @@ public class NotificationController extends HttpServlet {
 
 				pw.print(medicinesList);	
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1250,7 +1251,7 @@ public class NotificationController extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 				pw.print("deleted");	
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1269,7 +1270,7 @@ public class NotificationController extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 				pw.print("deleted");	
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1305,7 +1306,7 @@ public class NotificationController extends HttpServlet {
 				}
 				
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					PrintWriter pw = response.getWriter();
     				pw.print("empty");
 			}
@@ -1324,7 +1325,7 @@ public class NotificationController extends HttpServlet {
 				
 				pw.print(likes.size());	
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 				
     				pw.print("empty");
 			}
@@ -1355,7 +1356,7 @@ public class NotificationController extends HttpServlet {
 					lService.saveNotification(notification);
 				}
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 				
     				pw.print("empty");
 			}
@@ -1379,7 +1380,7 @@ public class NotificationController extends HttpServlet {
 					cService.removeCommunityMembers(communityId , doctorsId[j]);
 				}
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 				
     				pw.print("empty");
 			}
@@ -1413,7 +1414,7 @@ public class NotificationController extends HttpServlet {
 				
 				
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 				
     				pw.print("empty");
 			}

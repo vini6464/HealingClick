@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 
 import org.apache.log4j.Logger;
 
@@ -46,7 +47,7 @@ public class DoctorDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -80,7 +81,7 @@ public class DoctorDao {
 				symptoms.add(symptom);
 			}
 		} catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -114,7 +115,7 @@ public class DoctorDao {
 				symptoms.add(symptom);
 			}
 		}  catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -145,7 +146,7 @@ public class DoctorDao {
 				i.setCost(rs.getDouble(3));
 			}
 		}  catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -219,7 +220,7 @@ public class DoctorDao {
 			}
 		}  catch (SQLException e) {
 			
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -253,7 +254,7 @@ public class DoctorDao {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();		}
+			logger.error(Level.SEVERE,e); throw new DaoException();		}
 		finally
 		{
 			DBUtil.releaseResource(rs);
@@ -319,7 +320,7 @@ public class DoctorDao {
 				pres.add(pre);
 			}
 		}  catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -370,7 +371,7 @@ public class DoctorDao {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -402,7 +403,7 @@ public class DoctorDao {
 				i.setCost(rs.getDouble("cost"));
 			}
 		}  catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -432,7 +433,7 @@ public class DoctorDao {
 				
 			}
 		}  catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -462,7 +463,7 @@ public class DoctorDao {
 				
 			}
 		}  catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -497,7 +498,7 @@ public class DoctorDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -527,7 +528,7 @@ public class DoctorDao {
 				i.setName(rs.getString(2));
 			}
 		}  catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);

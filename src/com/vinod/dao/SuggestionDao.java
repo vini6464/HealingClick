@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 
 import org.apache.log4j.Logger;
 
@@ -49,7 +50,7 @@ public class SuggestionDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -89,7 +90,7 @@ public class SuggestionDao {
 		} 
 		 catch (SQLException e) {
 			
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -130,7 +131,7 @@ public class SuggestionDao {
 		} 
 		 catch (SQLException e) {
 			
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -160,7 +161,7 @@ public class SuggestionDao {
 			
 					} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -190,7 +191,7 @@ public class SuggestionDao {
 			
 					} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -231,7 +232,7 @@ public class SuggestionDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -268,7 +269,7 @@ public class SuggestionDao {
 		} 
 		 catch (SQLException e) {
 			
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -297,7 +298,7 @@ public class SuggestionDao {
 		} 
 		 catch (SQLException e) {
 			
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -327,7 +328,7 @@ public class SuggestionDao {
 		} 
 		 catch (SQLException e) {
 			
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -357,7 +358,7 @@ public class SuggestionDao {
 		} 
 		 catch (SQLException e) {
 			
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);

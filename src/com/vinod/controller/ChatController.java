@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -154,7 +155,7 @@ public class ChatController extends HttpServlet {
 	    				pw.print(list);
 	            		
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -184,7 +185,7 @@ public class ChatController extends HttpServlet {
 
 	    				pw.print(list);
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -208,7 +209,7 @@ public class ChatController extends HttpServlet {
 	    				pw.print(list);
 	            		
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -232,7 +233,7 @@ public class ChatController extends HttpServlet {
 	    				pw.print(list);
 	            		
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -259,7 +260,7 @@ public class ChatController extends HttpServlet {
 
 	    				pw.print(list);
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -283,7 +284,7 @@ public class ChatController extends HttpServlet {
 	    				pw.print(list);
 	            		
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -307,7 +308,7 @@ public class ChatController extends HttpServlet {
 	    				pw.print(list);
 	            		
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -373,7 +374,7 @@ public class ChatController extends HttpServlet {
 
 
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				PrintWriter pw = response.getWriter();
 				pw.print("empty");
 			}
@@ -435,7 +436,7 @@ public class ChatController extends HttpServlet {
 	            	    
 	            		
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -467,7 +468,7 @@ public class ChatController extends HttpServlet {
 	            	    
 	            		
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -533,7 +534,7 @@ public class ChatController extends HttpServlet {
 	            	    
 	            		
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -567,7 +568,7 @@ public class ChatController extends HttpServlet {
 	            	    
 	            		
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}
@@ -686,7 +687,7 @@ public class ChatController extends HttpServlet {
 	            	    
 	            		
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						PrintWriter pw = response.getWriter();
 	    				pw.print("empty");
 					}

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Time;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -78,9 +79,9 @@ public class AlertController extends HttpServlet {
 				    lService.sendMessage(vaccinations.get(j).getMobile() ,message);
 				}
 				
-				lService.sendMessage(vin, "Successfully Vaccination SMS Sent");
+				//lService.sendMessage(vin, "Successfully Vaccination SMS Sent");
 			} catch (Exception e1) {
-				logger.error(e1.getStackTrace());
+				logger.error(Level.SEVERE,e1);
 				lService.sendMessage(vin, "Error while sending Vaccination SMS");
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 
@@ -138,9 +139,9 @@ public class AlertController extends HttpServlet {
 				    
 				}
 				
-				lService.sendMessage(vin, "Successfully Medicines SMS Sent");
+				//lService.sendMessage(vin, "Successfully Medicines SMS Sent");
 			} catch (Exception e1) {
-				logger.error(e1.getStackTrace());
+				logger.error(Level.SEVERE,e1);
 				lService.sendMessage(vin, "Error while sending Medicines SMS");
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 

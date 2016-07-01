@@ -3,6 +3,7 @@ package com.vinod.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -97,7 +98,7 @@ public class SearchController extends HttpServlet {
 						}
 						pw.print(msg);
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -132,7 +133,7 @@ public class SearchController extends HttpServlet {
 							}
 						pw.print(msg);
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -161,7 +162,7 @@ public class SearchController extends HttpServlet {
 						}
 						pw.print(msg);
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -197,7 +198,7 @@ public class SearchController extends HttpServlet {
 						
 						pw.print(msg);
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -221,7 +222,7 @@ public class SearchController extends HttpServlet {
 						}
 						pw.print(msg);
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -253,7 +254,7 @@ public class SearchController extends HttpServlet {
 						}
 						pw.print(msg);
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -277,7 +278,7 @@ public class SearchController extends HttpServlet {
 						}
 						pw.print(msg);
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -300,7 +301,7 @@ public class SearchController extends HttpServlet {
 						}
 						pw.print(msg);
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -333,7 +334,7 @@ public class SearchController extends HttpServlet {
 						}
 						pw.print(msg);
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -366,7 +367,7 @@ public class SearchController extends HttpServlet {
 					pw.print(msg);
 					
 				}catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}
@@ -391,7 +392,7 @@ public class SearchController extends HttpServlet {
 					String msg = "Connection Request Sent";
 					pw.print(msg);
 				}catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}
@@ -426,7 +427,7 @@ public class SearchController extends HttpServlet {
 					pw.print(msg);
 					
 				}catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}
@@ -451,7 +452,7 @@ public class SearchController extends HttpServlet {
 					pw.print(msg);
 					
 				}catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}
@@ -478,7 +479,7 @@ public class SearchController extends HttpServlet {
 					pw.print(msg);
 					
 				}catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}
@@ -496,7 +497,7 @@ public class SearchController extends HttpServlet {
 					String msg = "Deleted";
 					pw.print(msg);
 				}catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}
@@ -521,7 +522,7 @@ public class SearchController extends HttpServlet {
 						String msg = "Successfully Added";
 						pw.print(msg);
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -539,7 +540,7 @@ public class SearchController extends HttpServlet {
 						String msg = "Successfully Added";
 						pw.print(msg);
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -560,7 +561,7 @@ public class SearchController extends HttpServlet {
 	            		String msg = "Successfully Added";
 	            		pw.print(msg);
 	            	}catch (Exception e) {
-	            		logger.error(e.getStackTrace());
+	            		logger.error(Level.SEVERE,e);
 	            		request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 	            		target="home.jsp";
 	            	}
@@ -584,7 +585,7 @@ public class SearchController extends HttpServlet {
 						String msg = "Successfully Deleted";
 						pw.print(msg);
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -602,7 +603,7 @@ public class SearchController extends HttpServlet {
 						String msg = "Successfully Deleted";
 						pw.print(msg);
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -623,7 +624,7 @@ public class SearchController extends HttpServlet {
 	            		String msg = "Successfully Deleted";
 	            		pw.print(msg);
 	            	}catch (Exception e) {
-	            		logger.error(e.getStackTrace());
+	            		logger.error(Level.SEVERE,e);
 	            		request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 	            		target="home.jsp";
 	            	}
@@ -647,7 +648,7 @@ public class SearchController extends HttpServlet {
 						String msg = "Successfully Connected";
 						pw.print(msg);
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -665,7 +666,7 @@ public class SearchController extends HttpServlet {
 						String msg = "Successfully Connected";
 						pw.print(msg);
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -689,7 +690,7 @@ public class SearchController extends HttpServlet {
 						String msg = "Succesfully declined";
 						pw.print(msg);
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -707,7 +708,7 @@ public class SearchController extends HttpServlet {
 						String msg = "Succesfully declined";
 						pw.print(msg);
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -732,7 +733,7 @@ public class SearchController extends HttpServlet {
 						String msg = "Successfully Connected";
 						pw.print(msg);
 					}catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -757,7 +758,7 @@ public class SearchController extends HttpServlet {
 						String msg = "Succesfully Declined";
 						pw.print(msg);
 					} catch (Exception e) {
-						logger.error(e.getStackTrace());
+						logger.error(Level.SEVERE,e);
 						request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 						target="home.jsp";
 					}
@@ -786,7 +787,7 @@ public class SearchController extends HttpServlet {
 
 				pw.print(medicinesList);	
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="home.jsp";
 			}
@@ -814,7 +815,7 @@ public class SearchController extends HttpServlet {
 
 				pw.print("1");	
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="home.jsp";
 			}
@@ -841,7 +842,7 @@ public class SearchController extends HttpServlet {
 
 				pw.print("1");	
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="home.jsp";
 			}
@@ -868,7 +869,7 @@ public class SearchController extends HttpServlet {
 
 				pw.print("1");	
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="home.jsp";
 			}

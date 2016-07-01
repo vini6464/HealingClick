@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -450,7 +451,7 @@ public class HomeController extends HttpServlet {
 				request.setAttribute("pharmacy", pharmacy);
 				target="pharmacyhome.jsp";
 			} catch (Exception e1) {
-				logger.error(e1.getStackTrace());
+				logger.error(Level.SEVERE,e1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="home.jsp";
 			}

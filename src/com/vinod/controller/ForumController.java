@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -768,7 +769,7 @@ public class ForumController extends HttpServlet {
 			
 		} catch (Exception e) {
 			try {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				target = lService.setErrorControl(request,target,login1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 			} catch (Exception e1) {

@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -191,7 +192,7 @@ public class AdminController extends HttpServlet {
 				request.setAttribute("doctors", doctors);
 				target="adminActivate.jsp";
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -208,7 +209,7 @@ public class AdminController extends HttpServlet {
 				request.setAttribute("pharmacies", pharmacies);
 				target="orders.jsp";
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -338,7 +339,7 @@ public class AdminController extends HttpServlet {
 				request.setAttribute("orders", orders);
 				target="orders.jsp";
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -378,7 +379,7 @@ public class AdminController extends HttpServlet {
 				request.setAttribute("order", order);
 				target="adminOrder.jsp";
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -397,7 +398,7 @@ public class AdminController extends HttpServlet {
 				
 				target="prescription.jsp";
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -498,7 +499,7 @@ public class AdminController extends HttpServlet {
 					
 					target="prescription.jsp";
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -593,7 +594,7 @@ public class AdminController extends HttpServlet {
 					
 				target="adminPrescription.jsp";
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -724,7 +725,7 @@ public class AdminController extends HttpServlet {
 					
 				target="users.jsp";
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -886,7 +887,7 @@ public class AdminController extends HttpServlet {
 					
 				target="forums.jsp";
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -962,7 +963,7 @@ public class AdminController extends HttpServlet {
 					
 				target="adminForum.jsp";
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -1035,7 +1036,7 @@ public class AdminController extends HttpServlet {
 				
 			} catch (Exception e) {
 				
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -1076,7 +1077,7 @@ public class AdminController extends HttpServlet {
 				
 			} catch (Exception e) {
 				
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -1100,7 +1101,7 @@ public class AdminController extends HttpServlet {
 				String msg="Activated";
 				pw.print(msg);
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -1125,7 +1126,7 @@ public class AdminController extends HttpServlet {
 				String msg="Activated";
 				pw.print(msg);
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -1151,7 +1152,7 @@ public class AdminController extends HttpServlet {
 				request.setAttribute("doctor", doctor);
 				target="adminDoctor.jsp";
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -1175,7 +1176,7 @@ public class AdminController extends HttpServlet {
 				request.setAttribute("patient", doctor);
 				target="adminPatient.jsp";
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -1227,7 +1228,7 @@ public class AdminController extends HttpServlet {
 				request.setAttribute("pharmacy", doctor);
 				target="adminPharmacy.jsp";
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -1271,7 +1272,7 @@ public class AdminController extends HttpServlet {
 				target="adminhome.jsp";
 				
 			} catch (Exception e1) {
-				logger.error(e1.getStackTrace());
+				logger.error(Level.SEVERE,e1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -1317,7 +1318,7 @@ public class AdminController extends HttpServlet {
 				target="complaints.jsp";
 				
 			} catch (Exception e1) {
-				logger.error(e1.getStackTrace());
+				logger.error(Level.SEVERE,e1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -1361,7 +1362,7 @@ public class AdminController extends HttpServlet {
 				
 				
 			} catch (Exception e1) {
-				logger.error(e1.getStackTrace());
+				logger.error(Level.SEVERE,e1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="adminlogin.jsp";
 			}
@@ -1384,7 +1385,7 @@ public class AdminController extends HttpServlet {
 				lService.saveNotification(notification);
 				
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 			}
 	
 		}

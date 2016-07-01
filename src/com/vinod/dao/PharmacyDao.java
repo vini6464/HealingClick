@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import org.apache.log4j.Logger;
 
@@ -61,7 +62,7 @@ public class PharmacyDao {
 		} 
 		 catch (SQLException e) {
 			 
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		} finally
 		{
 			DBUtil.releaseResource(rs);
@@ -98,7 +99,7 @@ public class PharmacyDao {
 			}
 		} 
 		 catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		} finally
 		{
 			DBUtil.releaseResource(rs);
@@ -125,7 +126,7 @@ public class PharmacyDao {
 		    System.out.println("Successfully Delivery Charge Updated : "+i);
 		}catch (SQLException e) {
 			
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			
@@ -158,7 +159,7 @@ public class PharmacyDao {
 				medicines.add(medicine);
 			}
 		}  catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -180,7 +181,7 @@ public class PharmacyDao {
 			ps.setInt(1, login.getId());
 			i = ps.executeUpdate();
 		} catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();		}finally
+			logger.error(Level.SEVERE,e); throw new DaoException();		}finally
 			{
 				DBUtil.releaseResource(rs);
 				DBUtil.releaseResource(ps);
@@ -213,7 +214,7 @@ public class PharmacyDao {
 	            }
 	        }
 		} catch (SQLException e) {
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();		}finally
+			logger.error(Level.SEVERE,e); throw new DaoException();		}finally
 			{
 				DBUtil.releaseResource(rs);
 				DBUtil.releaseResource(ps);

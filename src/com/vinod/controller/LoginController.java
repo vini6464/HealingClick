@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -155,7 +156,7 @@ public class LoginController extends HttpServlet {
 
 
 				}}catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Please Login To Continue.");
 					target="home.jsp";
 				}
@@ -209,7 +210,7 @@ public class LoginController extends HttpServlet {
 					service.setLastActive(login);
 					service.changeNotificationImage(login,imagePath);
 				} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}
@@ -296,7 +297,7 @@ public class LoginController extends HttpServlet {
 					service.setLastActive(login);
 					service.changeNotificationImage(login,imagePath);
 				} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Please Login To Continue.");
 					target="home.jsp";
 				}
@@ -801,7 +802,7 @@ public class LoginController extends HttpServlet {
 					}
 				}
 			} catch (Exception e1) {
-				logger.error(e1.getStackTrace());
+				logger.error(Level.SEVERE,e1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				target="home.jsp";
 			}
@@ -882,7 +883,7 @@ public class LoginController extends HttpServlet {
 				 }
 				 pw.print(msg);
 				}catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					 pw.print(msg);
 					
 				}
@@ -943,7 +944,7 @@ public class LoginController extends HttpServlet {
 
 				}
 			} catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Please Login To Continue.");
 				target="home.jsp";
 			}
@@ -1040,7 +1041,7 @@ public class LoginController extends HttpServlet {
 					}
 
 				}} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}

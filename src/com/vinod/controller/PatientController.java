@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -899,11 +900,11 @@ public class PatientController extends HttpServlet {
 
 		} catch (Exception e) {
 			try {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				target = lService.setErrorControl(request,target,login1);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 			} catch (Exception e1) {
-				logger.error(e1.getStackTrace());
+				logger.error(Level.SEVERE,e1);
 				request.setAttribute("error", "Please Login To Continue.");
 				target="home.jsp";
 			}

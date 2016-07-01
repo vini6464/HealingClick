@@ -3,6 +3,7 @@ package com.vinod.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -255,11 +256,11 @@ public class AppointmentController extends HttpServlet {
 				}
 			}  catch (Exception e) {
 				try {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					
 					request.setAttribute("error", "Please Login To Continue.");
 					target="home.jsp";
@@ -289,7 +290,7 @@ public class AppointmentController extends HttpServlet {
 
 
 			}  catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 			}
 		}
 		
@@ -343,7 +344,7 @@ public class AppointmentController extends HttpServlet {
 				target="patientPlanner.jsp";
 			}  catch (Exception e) {
 				try {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
@@ -462,7 +463,7 @@ public class AppointmentController extends HttpServlet {
 				
 			}  catch (Exception e) {
 				try {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
@@ -558,7 +559,7 @@ public class AppointmentController extends HttpServlet {
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Please Login To Continue.");
 					target="home.jsp";
 				}
@@ -616,7 +617,7 @@ public class AppointmentController extends HttpServlet {
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Please Login To Continue.");
 					target="home.jsp";
 				}
@@ -695,7 +696,7 @@ public class AppointmentController extends HttpServlet {
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Please Login To Continue.");
 					target="home.jsp";
 				}
@@ -721,7 +722,7 @@ public class AppointmentController extends HttpServlet {
 
 
 			}  catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 			}
 		}
 		
@@ -764,7 +765,7 @@ public class AppointmentController extends HttpServlet {
 
 
 			}  catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 			}
 		}
 		
@@ -801,7 +802,7 @@ public class AppointmentController extends HttpServlet {
 
 
 			}  catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 			}
 		}
 

@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -150,7 +150,7 @@ public class SuggestionController extends HttpServlet {
 			} catch (Exception e) {
 
 				try {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
@@ -219,7 +219,7 @@ public class SuggestionController extends HttpServlet {
 			} catch (Exception e) {
 
 				try {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
@@ -245,7 +245,7 @@ public class SuggestionController extends HttpServlet {
 
 			} catch (Exception e) {
 				try {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
@@ -316,7 +316,7 @@ public class SuggestionController extends HttpServlet {
 
 			}catch (Exception e) {
 				try {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
@@ -440,7 +440,7 @@ public class SuggestionController extends HttpServlet {
 			} catch (Exception e) {
 
 				try {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
@@ -556,7 +556,7 @@ public class SuggestionController extends HttpServlet {
 				 request.setAttribute("insert", 1);
 			} catch (Exception e) {
 				try {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {
@@ -639,7 +639,7 @@ public class SuggestionController extends HttpServlet {
 
 			}catch (Exception e) {
 				try {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					target = lService.setErrorControl(request,target,login1);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 				} catch (Exception e1) {

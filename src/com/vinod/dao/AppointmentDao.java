@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import org.apache.log4j.Logger;
 
@@ -51,7 +52,7 @@ public class AppointmentDao {
 		   
 		}catch (SQLException e) {
 			
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -94,7 +95,7 @@ public class AppointmentDao {
 			}
 		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -132,7 +133,7 @@ public class AppointmentDao {
 			}
 		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -164,7 +165,7 @@ public class AppointmentDao {
 		    System.out.println("Successfully event Updated with id "+appointment.getId()+" : "+i);
 		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			
@@ -190,7 +191,7 @@ public class AppointmentDao {
 		    System.out.println("Successfully event Deleted with id "+eventId+" : "+i);
 		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			
@@ -240,7 +241,7 @@ public class AppointmentDao {
 			}
 		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			DBUtil.releaseResource(rs);
@@ -266,7 +267,7 @@ public class AppointmentDao {
 		    System.out.println("Successfully event Accepted with id "+eventId+" : "+i);
 		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-			logger.error("In DAO:"+e.getStackTrace()); throw new DaoException();
+			logger.error(Level.SEVERE,e); throw new DaoException();
 		}finally
 		{
 			

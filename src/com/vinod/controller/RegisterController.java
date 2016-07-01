@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -134,7 +135,7 @@ javax.servlet.Servlet {
 					}
 
 				} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}
@@ -176,7 +177,7 @@ javax.servlet.Servlet {
 						}
 					}
 				}catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				}
@@ -218,7 +219,7 @@ javax.servlet.Servlet {
 						} 
 					}
 				} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 					target="home.jsp";
 				} 
@@ -246,7 +247,7 @@ javax.servlet.Servlet {
 
 				}  catch (Exception e) {
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 				}
 			}
 
@@ -261,7 +262,7 @@ javax.servlet.Servlet {
 
 				}catch (Exception e) {
 					request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 				}
 			}
 			if(id==3)
@@ -275,7 +276,7 @@ javax.servlet.Servlet {
 					pw.print(i);
 
 				} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 				}
 			}
 		}
@@ -301,7 +302,7 @@ javax.servlet.Servlet {
 					pw.print(msg);
 
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 				}
 			}
 
@@ -320,7 +321,7 @@ javax.servlet.Servlet {
 					pw.print(msg);
 
 				}catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 				}
 			}
 			if(id==3)
@@ -338,7 +339,7 @@ javax.servlet.Servlet {
 					pw.print(msg);
 
 				} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 				}
 			}
 		}
@@ -366,7 +367,7 @@ javax.servlet.Servlet {
 
 				} catch (Exception e) {
 
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 				} 
 			}
 
@@ -385,7 +386,7 @@ javax.servlet.Servlet {
 					pw.print(msg);
 
 				}  catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 				}
 			}
 			if(id==3)
@@ -403,7 +404,7 @@ javax.servlet.Servlet {
 					pw.print(msg);
 
 				} catch (Exception e) {
-					logger.error(e.getStackTrace());
+					logger.error(Level.SEVERE,e);
 				}
 			}
 		}
@@ -476,7 +477,7 @@ javax.servlet.Servlet {
 
 			}
 			catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 			}
 			request.getRequestDispatcher("home.jsp").forward(request, response);
@@ -548,7 +549,7 @@ javax.servlet.Servlet {
 				}
 			}
 			catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
 
 			}
@@ -611,7 +612,7 @@ javax.servlet.Servlet {
 				}
 			}
 			catch (Exception e) {
-				logger.error(e.getStackTrace());
+				logger.error(Level.SEVERE,e);
 				request.setAttribute("error", e.getMessage());
 			}
 			request.getRequestDispatcher("home.jsp").forward(request, response);
