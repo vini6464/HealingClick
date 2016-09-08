@@ -120,6 +120,58 @@ public class NotificationController extends HttpServlet {
 			
 		}
 		
+		if(uri.endsWith("checkGoogle.notification"))
+		{
+			
+			PrintWriter pw;
+			
+			pw = response.getWriter();
+			response.setContentType("text/html");
+			String msg = "";
+				try {
+					
+					String email = request.getParameter("mail");
+					
+					int id = service.checkEmailExistOrNot(email,2);
+					
+					 if(id>0)
+					 {
+						 Login login = new Login();
+						 login.setType(2);
+						 login.setId(id);
+							//login.setUserName(userName);
+						 HttpSession session = request.getSession();
+						 session.setAttribute("login", login);
+						 lService.setLastActive(login);
+						 msg = "patient.home";
+					 }
+					 else
+					 {
+						 String name = request.getParameter("name");
+						 String[] n = name.split(" ");
+						 Patient googleUser = new Patient();
+						 
+						 googleUser.setEmailId(email);
+						 googleUser.setFirstName(n[0]);
+						 googleUser.setLastName(n[1]);
+						 
+						 HttpSession session = request.getSession();
+						 session.setAttribute("googleUser", googleUser);
+						 msg = "googleUser.register";
+					 }
+					
+					
+					pw.print(msg);
+				} catch (Exception e) {
+					logger.error(e);
+					pw.print(msg);
+				}
+				
+			
+		}
+		
+		
+		
 		if(uri.endsWith("resendOTP.notification"))
 		{
 			

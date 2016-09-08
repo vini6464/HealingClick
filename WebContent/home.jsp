@@ -10,6 +10,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- Google Sign UP Changes Start -->
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <script src="https://apis.google.com/js/api:client.js"></script>
+
+
+<!-- Google Sign UP Changes Ends -->
+
+
 <title>HealingClick</title>
 
 <!-- Bootstrap -->
@@ -30,6 +38,57 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+    #customBtn1 {
+      display: inline-block;
+      background: white;
+      color: #444;
+      width: 100px;
+      border-radius: 5px;
+      border: thin solid #888;
+      box-shadow: 1px 1px 1px grey;
+      white-space: nowrap;
+    }
+    #customBtn1:hover {
+      cursor: pointer;
+    }
+    
+    #customBtn2 {
+      display: inline-block;
+      background: white;
+      color: #444;
+      width: 100px;
+      border-radius: 5px;
+      border: thin solid #888;
+      box-shadow: 1px 1px 1px grey;
+      white-space: nowrap;
+    }
+    #customBtn2:hover {
+      cursor: pointer;
+    }
+    
+    span.label {
+      font-family: serif;
+      font-weight: normal;
+    }
+    span.icon {
+      background: url('image/g-normal.png') transparent 5px 50% no-repeat;
+      display: inline-block;
+      vertical-align: middle;
+      width: 35px;
+      height: 42px;
+    }
+    span.buttonText {
+      display: inline-block;
+      vertical-align: middle;
+      padding-left: 0px;
+      padding-right: 0px;
+      font-size: 14px;
+      font-weight: bold;
+      /* Use the Roboto font that is loaded in the <head> */
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:600);
 
@@ -182,6 +241,38 @@ text-align: center;
 	}
 }
 </style>
+
+<!-- <script type="text/javascript" src="//platform.linkedin.com/in.js">
+    api_key: 78a8x6styqzpzb
+    authorize: true
+    onLoad: onLinkedInLoad
+</script> -->
+
+<!-- <script type="text/javascript">
+    
+    // Setup an event listener to make an API call once auth is complete
+    function onLinkedInLoad() {
+        IN.Event.on(IN, "auth", getProfileData);
+    }
+
+    // Handle the successful return from the API call
+    function onSuccess(data) {
+        console.log(data);
+    }
+
+    // Handle an error response from the API call
+    function onError(error) {
+        console.log(error);
+    }
+
+    // Use the API call wrapper to request the member's basic profile data
+    function getProfileData() {
+        IN.API.Raw("/people/~").result(onSuccess).error(onError);
+    }
+
+</script> -->
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -195,8 +286,78 @@ ga('send', 'pageview');
 
 <script type="text/javascript">
 
-$(document).ready(function() {
+var googleUser = {};
+var startApp = function() {
+  gapi.load('auth2', function(){
+    // Retrieve the singleton for the GoogleAuth library and set up the client.
+    auth2 = gapi.auth2.init({
+      client_id: '473089701112-5scm033r5b0889igb3i8ooa8gp5r5g69.apps.googleusercontent.com',
+      cookiepolicy: 'single_host_origin',
+      // Request scopes in addition to 'profile' and 'email'
+      //scope: 'additional_scope'
+    });
+    attachSignin(document.getElementById('customBtn1'),document.getElementById('customBtn2'));
+  });
+};
 
+function attachSignin(element,elem) {
+  console.log(element.id);
+  auth2.attachClickHandler(element, {},
+      function(googleUser) {
+	  var profile = googleUser.getBasicProfile();
+	  checkUser(profile);
+      }, function(error) {
+        alert(JSON.stringify(error, undefined, 2));
+      });
+  auth2.attachClickHandler(elem, {},
+	      function(googleUser) {
+		  var profile = googleUser.getBasicProfile();
+		  checkUser(profile);
+	      }, function(error) {
+	        alert(JSON.stringify(error, undefined, 2));
+	      });
+}
+
+	
+function checkUser(profile) {
+	var id = profile.getId();
+	var name = profile.getName();
+	var mail = profile.getEmail();
+	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  console.log('Name: ' + profile.getName());
+	  console.log('Image URL: ' + profile.getImageUrl());
+	  console.log('Email: ' + profile.getEmail());
+	  $.ajax({
+			method : "GET",
+			url : 'checkGoogle.notification',
+			data: { 
+				id : id,
+				name : name,
+				mail : mail
+				
+			},
+			success : function(result) {
+				if(result!="")
+					{
+					window.location.href = result;
+					}
+
+			},
+			statusCode : {
+				500 : function(result) {
+					
+				}
+			}
+		});
+	  
+	 
+	}
+
+
+
+$(document).ready(function() {
+	$("#customBtn1").hide();
+	$("#customBtn2").hide();
 	
 		$.ajax({
 			method : "GET",
@@ -231,7 +392,27 @@ function changePassword()
 	
 }
 
+function showGoogleSignIn(id)
+{
+	if(id == 2){
+		$("#customBtn1").show();
+	}else{
+		$("#customBtn1").hide();
+	}
+}
+
+function showGoogleSignUp(id)
+{
+	if(id == 2){
+		$("#customBtn2").show();
+	}else{
+		$("#customBtn2").hide();
+	}
+	
+}
+
 </script>
+
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 <script type='text/javascript' src='js/loadImg.js'></script>
@@ -409,6 +590,40 @@ if it's not present, don't show loader */
 
 								<form role="form" action="login.login" style="padding: 10px;"
 									method="post">
+									<div class="row clearfix xs_small"
+										style="margin-top: -10px; position: relative; top: -10px;">
+										<div class="col-xs-4 col-sm-4 column xs_small"
+											style="padding-left:; text-align: center">
+
+
+											<label class="radio"> <input type="radio" name="type"
+												data-toggle="radio" id="optionsRadios1" value="1" onclick="showGoogleSignIn(1)"
+												
+												 checked>
+												<small style="letter-spacing: 1px;" data-toggle="tooltip" data-placement="top"
+												title="Select this if u are a Doctor">Doctor</small>
+											</label>
+										</div>
+										<div class="col-xs-4 col-sm-4 column"
+											style="margin-left: px; text-align: center">
+											<label class="radio"> <input type="radio" name="type"
+												data-toggle="radio" id="optionsRadios1" value="2" onclick="showGoogleSignIn(2)"> 
+												<small
+												style="color:; letter-spacing: 1px;" data-toggle="tooltip" data-placement="top"
+												title="Select this if u are a Patient">Patient</small>
+											</label>
+
+										</div>
+										<div class="col-xs-4 col-sm-4 column"
+											style="margin-left: px; text-align: center; width: px;">
+
+											<label class="radio"> <input type="radio" name="type"
+												data-toggle="radio" id="optionsRadios1" value="3" onclick="showGoogleSignIn(3)"> <i></i><small
+												style="letter-spacing: 1px;" data-toggle="tooltip" data-placement="top"
+												title="Select this if u are a Pharmacist">Pharmacist</small>
+											</label>
+										</div>
+									</div>
 									<div class="row clearfix">
 										<div class="col-xs-12">
 											<div class="form-group">
@@ -426,47 +641,26 @@ if it's not present, don't show loader */
 											</div>
 										</div>
 									</div>
-									<div class="row clearfix xs_small"
-										style="margin-top: -10px; position: relative; top: -10px;">
-										<div class="col-xs-4 col-sm-4 column xs_small"
-											style="padding-left:; text-align: center">
-
-
-											<label class="radio"> <input type="radio" name="type"
-												data-toggle="radio" id="optionsRadios1" value="1" 
-												
-												 checked>
-												<small style="letter-spacing: 1px;" data-toggle="tooltip" data-placement="top"
-												title="select this if u are a doctor">Doctor</small>
-											</label>
-										</div>
-										<div class="col-xs-4 col-sm-4 column"
-											style="margin-left: px; text-align: center">
-											<label class="radio"> <input type="radio" name="type"
-												data-toggle="radio" id="optionsRadios1" value="2"> 
-												<small
-												style="color:; letter-spacing: 1px;" data-toggle="tooltip" data-placement="top"
-												title="select this if u are a Patient">Patient</small>
-											</label>
-
-										</div>
-										<div class="col-xs-4 col-sm-4 column"
-											style="margin-left: px; text-align: center; width: px;">
-
-											<label class="radio"> <input type="radio" name="type"
-												data-toggle="radio" id="optionsRadios1" value="3"> <i></i><small
-												style="letter-spacing: 1px;" data-toggle="tooltip" data-placement="top"
-												title="select this if u are a Pharmacist">Pharmacist</small>
-											</label>
-										</div>
-									</div>
+									
 									<div class="row clearfix" style="margin-top: -7px;">
 										<div class="form-group">
 											<div class="col-md-5 colsm-5 col-xs-5 column">
 												<input type="submit" class="btn btn-block  btn-sm pull-left"
 													id="bbb" style="font-weight: bold; letter-spacing: 1px;"
 													value="Login ">
+													
+													
 											</div>
+											
+											
+												<div id="customBtn1" class="customGPlusSignIn">
+													<span class="icon"></span> <span class="buttonText">Sign In</span>
+												</div>
+											
+											
+											<script>startApp();</script>
+											
+											<script type="in/Login"></script>
 											<div class="col-md-7 colsm-7 col-xs-7 column"
 												style="padding-top: 5px;">
 												<a href="javascript:changePassword();"
@@ -506,6 +700,40 @@ if it's not present, don't show loader */
 								<form class="form-horizontal" role="form" name="form1"
 									action="register.register" style="padding: 10px;" method="post"
 									onSubmit="return home();">
+									<div class="row clearfix" style="margin-top: -5px;">
+										<div class="col-xs-4 col-sm-4 column"
+											style="padding-left: 22px; text-align: center">
+
+
+											<label class="radio"> <input type="radio"
+												name="type1" data-toggle="radio" id="optionsRadios1"
+												value="1" onclick="showGoogleSignUp(1)" checked> <small
+												style="letter-spacing: 1px;" data-toggle="tooltip" data-placement="top"
+												title="Select this if u are a Doctor">Doctor</small>
+											</label>
+										</div>
+										<div class="col-xs-4 col-sm-4 column"
+											style="padding-left: 0px; text-align: center">
+											<label class="radio"> <input type="radio"
+												name="type1" data-toggle="radio" id="optionsRadios1"
+												value="2" onclick="showGoogleSignUp(2)"> <small
+												style="letter-spacing: 1px;" data-toggle="tooltip" data-placement="top"
+												title="Select this if u are a Patient">Patient</small>
+											</label>
+
+										</div>
+										<div class="col-xs-4 col-sm-4 column"
+											style="padding-left: 0px; text-align: center;">
+
+											<label class="radio"> <input type="radio"
+												name="type1" data-toggle="radio" id="optionsRadios1"
+												value="3" onclick="showGoogleSignUp(3)"> <small
+												style="letter-spacing: 1px;" data-toggle="tooltip" data-placement="top"
+												title="Select this if u are a Pharmacist">Pharmacist</small>
+											</label>
+										</div>
+									</div>
+									<br/>
 									<div class="form-group">
 										<div class="col-xs-6 col-sm-6">
 											<input type="text" class="form-control" name="firstname"
@@ -546,51 +774,25 @@ if it's not present, don't show loader */
 									</div>
 
 
-
-
-									<div class="row clearfix" style="margin-top: -5px;">
-										<div class="col-xs-4 col-sm-4 column"
-											style="padding-left: 22px; text-align: center">
-
-
-											<label class="radio"> <input type="radio"
-												name="type1" data-toggle="radio" id="optionsRadios1"
-												value="1" checked> <small
-												style="letter-spacing: 1px;" data-toggle="tooltip" data-placement="top"
-												title="select this if u are a Doctor">Doctor</small>
-											</label>
-										</div>
-										<div class="col-xs-4 col-sm-4 column"
-											style="padding-left: 0px; text-align: center">
-											<label class="radio"> <input type="radio"
-												name="type1" data-toggle="radio" id="optionsRadios1"
-												value="2"> <small
-												style="letter-spacing: 1px;" data-toggle="tooltip" data-placement="top"
-												title="select this if u are a Patient">Patient</small>
-											</label>
-
-										</div>
-										<div class="col-xs-4 col-sm-4 column"
-											style="padding-left: 0px; text-align: center;">
-
-											<label class="radio"> <input type="radio"
-												name="type1" data-toggle="radio" id="optionsRadios1"
-												value="3"> <small
-												style="letter-spacing: 1px;" data-toggle="tooltip" data-placement="top"
-												title="select this if u are a Pharmacist">Pharmacist</small>
-											</label>
-										</div>
-									</div>
-
-
-
+										
+										
 
 									<div class="form-group" style="margin-top: 12px;margin-bottom:0px;">
+									
 										<div class="col-md-12 ">
+										<div id="customBtn2" class="customGPlusSignIn">
+													<span class="icon"></span> <span class="buttonText">Sign Up</span>
+												</div>
 											<input type="submit" id="bbb" class="btn btn-block btn-sm pull-right"
 												style="font-weight: bold; width: 100px;" value="Register">
 										</div>
+										
+										
+												
+											
 									</div>
+									
+									
 								</form>
 
 
@@ -786,7 +988,6 @@ if it's not present, don't show loader */
 		</div>
 
 	</div>
-
 
 
 

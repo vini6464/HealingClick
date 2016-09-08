@@ -350,6 +350,7 @@ function checkUserName(id)
 				$("#user1").html("Not Available");
 				$("#user1").data("value",1);
 				$("#user1").css({ "color": 'red'});
+				document.form.username.value = "";
 				document.form.username.focus();
 				
 			}	

@@ -1,17 +1,16 @@
 package com.vinod.controller;
 
 import java.io.File;
-
 import java.io.IOException;
 
 
 import java.io.PrintWriter;
-
 import java.sql.Timestamp;
-
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 
 import javax.servlet.ServletException;
@@ -19,11 +18,14 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
 import com.vinod.model.Doctor;
 import com.vinod.model.Log;
+import com.vinod.model.Login;
+import com.vinod.model.Notification;
 import com.vinod.model.Patient;
 import com.vinod.model.Pharmacy;
 import com.vinod.service.LoginService;
@@ -71,6 +73,88 @@ javax.servlet.Servlet {
 		{
 
 			request.getRequestDispatcher("home.jsp").forward(request, response);
+
+		}
+		
+		if(uri.endsWith("googleUser.register"))
+		{
+
+			 Patient googleUser = new Patient();
+			 googleUser = (Patient) request.getSession().getAttribute("googleUser");
+			 HttpSession session = request.getSession();
+			 session.setAttribute("googleUser", googleUser);
+			 request.setAttribute("googleUser", googleUser);
+			 request.getRequestDispatcher("googleRegister.jsp").forward(request, response);
+
+		}
+		
+		if(uri.endsWith("personalDeatils.register"))
+		{
+			String target = "";
+			try {
+			 Patient googleUser = new Patient();
+			 googleUser = (Patient) request.getSession().getAttribute("googleUser");
+			 googleUser.setMobile(Long.parseLong(request.getParameter("mobile")));
+			 googleUser.setUserName(request.getParameter("username"));
+			 googleUser.setPassWord(request.getParameter("password"));
+
+				String dob = request.getParameter("dob");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				Date date;
+				
+					date = sdf.parse(dob);
+					googleUser.setDob(date);
+				googleUser.setImage("image"+File.separator+"d.jpg");
+				googleUser.setGender(Integer.parseInt(request.getParameter("gender")));
+				
+				
+				googleUser.setLandLine(0);
+
+				//patient.setAboutMe(request.getParameter("aboutme"));
+				googleUser.setCreationDate(new Timestamp(new Date().getTime()));
+
+				int i = service.registerPatient(googleUser);
+				if(i>0)
+				{
+					
+					request.setAttribute("msg", "SuccessFully Registered");
+					SearchService sService= new SearchService();
+					List<Pharmacy> pharmacies = service.getAllPharmacies();
+					for (Pharmacy p : pharmacies) {
+						sService.patientPharmacy(p.getId(),i);
+					}
+					
+
+				}
+				String content = "Created";
+				Log log = new Log(i,2,content);
+				lService.saveLog(log);
+				
+				Random rn = new Random();
+				 Long OTP = (long) (100000 + rn.nextInt(900000));
+				 System.out.println(OTP);
+				 HttpSession session1 = request.getSession();
+			     session1.setAttribute("OTP", OTP);
+			    
+			     String message = "Dear "+googleUser.getFirstName()+" "+googleUser.getLastName()+" , Welcome to Healingclick. Your OTP for login is "+OTP;
+			     lService.sendMessage(googleUser.getMobile() ,message);
+			     googleUser.setId(i);
+			     request.setAttribute("patient", googleUser);
+			     content = "<a href='patientEdit.profile'>Click to Update Your Complete Profile</a>";
+			     Notification notification = new Notification(0, 0, content, i, 0,2);
+			     notification.setImage(googleUser.getImage());
+			     lService.saveNotification(notification);
+			
+			     
+			     target="verify.jsp";
+			     
+			} catch (Exception e) {
+				logger.error(Level.SEVERE,e);
+				request.setAttribute("error", "Sorry, Something Went Wrong, Try Again.");
+				target="home.jsp";
+			}
+			 
+			 request.getRequestDispatcher(target).forward(request, response);
 
 		}
 
