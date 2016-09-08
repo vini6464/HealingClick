@@ -33,45 +33,6 @@ $(document).ready(function(){
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-<script>
-var id = "${id}";
-var type= "${type}";
-
-function savePassword()
-{
-	var password = document.getElementById("userpassword").value;
-	$.ajax({
-		method : "GET",
-		url : 'savePassword.notification',
-		data: { 
-			id : id,
-			type : type,
-			password : password
-		},
-		success : function(result) {
-			
-			if (result == 1) {
-					var home = "";
-					if (type == 1) {
-						home = "doctor.home";
-					}
-					if (type == 2) {
-						home = "patient.home";
-					}
-					if (type == 3) {
-						home = "pharmacy.home";
-					}
-					window.location = home;
-				}
-			},
-			statusCode : {
-				500 : function(result) {
-
-				}
-			}
-		});
-	}
-</script>
 
 <style>
 .panel-default>.panel-heading {
