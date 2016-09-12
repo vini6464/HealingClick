@@ -29,6 +29,73 @@ window.onunload=function(){null};
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
+
+function verifyPhone()
+{
+	var xmlhttp;
+	var phone = document.form.mobile.value;
+	var num = /^\d{10}$/;
+	if(!num.test(phone))
+		{
+		document.form.mobile.value = "";
+		$("#phone1").show();
+		$("#phone1").css({ "color": 'red'});
+		$("#phone1").html(phone+" is incorrect mobile number format");
+		}
+	else
+		{
+	var c = 2;
+	
+	
+	if (window.XMLHttpRequest)
+	{// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			
+			var result = xmlhttp.responseText;
+			
+			if(result!="")
+				{
+				$("#phone1").show();
+				$("#phone1").css({ "color": 'red'});
+				$("#phone1").html(result);
+				
+				document.form.mobile.focus();
+				document.form.mobile.value = "";
+				}
+			else
+				{
+				$("#phone1").hide();
+				}
+			
+		}
+	};
+	xmlhttp.open("GET","checkPhone.register?q="+phone+"&p="+c,true);
+	xmlhttp.send(null);
+		}
+}
+
+function validateForm()
+{
+	var username = document.form.username.value;
+
+	if(username.trim() == ""){
+		document.form.username.value = "";
+		document.form.username.focus();
+		return false;
+	}else{
+		return true;
+	}
+
+}
 </script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -119,19 +186,19 @@ $(document).ready(function(){
 				
 				                 
 					<form class="form-horizontal" name="form" role="form" 
-					action="personalDeatils.register"  method="post">
+					action="personalDeatils.register"  method="post" onSubmit="return validateForm();">
 					
 						<div class="form-group">
 							 <!--<label for="inputPassword3" class="col-sm-2 control-label">Password</label>-->
 							<div class="col-sm-10">
-								<input class="form-control" id="inputPassword3" name="username" type="text" data-toggle="tooltip" data-placement="top" title="Enter your user name" placeholder="Unique user name" onblur="checkUserName(2);" required/><span class="error-message" id="user1" data-value="1"></span><span class="error-message" id="user"></span>
+								<input class="form-control" id="inputPassword3" value=" " name="username" type="text" data-toggle="tooltip" data-placement="top" title="Enter your user name" placeholder="Unique user name" onblur="checkUserName(2);" autocomplete="off" required/><span class="error-message" id="user1" data-value="1"></span><span class="error-message" id="user"></span>
 							</div>
 						</div>
 					
 						<div class="form-group">
 							 <!--<label for="inputPassword3" class="col-sm-2 control-label">Password</label>-->
 							<div class="col-sm-10">
-								<input class="form-control" id="inputPassword3" type="password" name="password" data-toggle="tooltip" data-placement="top" title="Enter your password" placeholder="Your Password" required><span class="error-message" id="password" ></span>
+								<input class="form-control" id="inputPassword3" type="password" name="password" data-toggle="tooltip" data-placement="top" title="Enter your password" placeholder="Your Password" autocomplete="off" required><span class="error-message" id="password" ></span>
 							</div>
 						</div>
 						
@@ -158,7 +225,7 @@ $(document).ready(function(){
 											<input type="number" name="mobile" class="form-control"
 												maxlength="10" id="inputcontact" data-toggle="tooltip"
 												data-placement="top" title="Enter your contact no"
-												placeholder="Contact No." onchange="checkPhone();" required /><span
+												placeholder="Contact No." onchange="verifyPhone();" autocomplete="off" required /><span
 												class="error-message" id="phone"></span><span
 												class="error-message" id="phone1"></span>
 										</div>

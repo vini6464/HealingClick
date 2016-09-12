@@ -326,39 +326,45 @@ function checkUserName(id)
 	var xmlhttp;
 	var username = document.form.username.value;
 
-	if (window.XMLHttpRequest)
-	{// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp=new XMLHttpRequest();
-	}
-	else
-	{// code for IE6, IE5
-		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.onreadystatechange=function()
-	{
-		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	if(username.trim() == ""){
+		document.form.username.value = "";
+	}else
 		{
-			
-			var result = xmlhttp.responseText;
-			if(result == 0){
-				
-				$("#user1").html("Available");
-				$("#user1").data("value",0);
-				$("#user1").css({ "color": 'green'});
-				
-			}else{
-				$("#user1").html("Not Available");
-				$("#user1").data("value",1);
-				$("#user1").css({ "color": 'red'});
-				document.form.username.value = "";
-				document.form.username.focus();
-				
-			}	
-			
+		if (window.XMLHttpRequest)
+		{// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp=new XMLHttpRequest();
 		}
-	};
-	xmlhttp.open("GET","checkUserName.register?q="+username+"&p="+id,true);
-	xmlhttp.send(null);
+		else
+		{// code for IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				
+				var result = xmlhttp.responseText;
+				if(result == 0){
+					
+					$("#user1").html("Available");
+					$("#user1").data("value",0);
+					$("#user1").css({ "color": 'green'});
+					
+				}else{
+					$("#user1").html(username+" Not Available");
+					$("#user1").data("value",1);
+					$("#user1").css({ "color": 'red'});
+					document.form.username.value = "";
+					document.form.username.focus();
+					
+				}	
+				
+			}
+		};
+		xmlhttp.open("GET","checkUserName.register?q="+username.trim()+"&p="+id,true);
+		xmlhttp.send(null);
+		}
+	
 }
 
 
@@ -366,10 +372,13 @@ function checkPhone()
 {
 	var xmlhttp;
 	var phone = document.form1.mobile.value;
-	var num = /[0-9]+/;
+	var num = /^\d{10}$/;
 	if(!num.test(phone))
 		{
-		document.getElementById("phone").innerHTML="";
+		document.form1.mobile.value = "";
+		$("#phone1").show();
+		$("#phone1").css({ "color": 'red'});
+		$("#phone1").html(phone+" is incorrect mobile number format");
 		}
 	else
 		{
@@ -401,6 +410,7 @@ function checkPhone()
 				$("#phone1").show();
 				$("#phone1").html(result);
 				document.form1.mobile.focus();
+				document.form1.mobile.value = "";
 				}
 			else
 				{
@@ -444,6 +454,7 @@ function checkEmail()
 				document.form1.email.focus();
 				$("#mail1").show();
 				$("#mail1").html(result);
+				document.form1.email.value = "";
 				}
 			else
 				{

@@ -380,7 +380,7 @@ javax.servlet.Servlet {
 
 					if(i==1)
 					{
-						msg="This Contact already Registered as Doctor";
+						msg=mobile+" Contact already Registered as Doctor";
 					}
 
 					pw.print(msg);
@@ -399,7 +399,7 @@ javax.servlet.Servlet {
 					int i = service.checkUserNamePatient(mobile);
 					if(i==1)
 					{
-						msg="This Contact already Registered as Patient";
+						msg=mobile+" Contact already Registered as Patient";
 					}
 
 					pw.print(msg);
@@ -417,7 +417,7 @@ javax.servlet.Servlet {
 					int i = service.checkUserNamePharmacy(mobile);
 					if(i==1)
 					{
-						msg="This Contact already Registered as Pharmacy";
+						msg=mobile+" Contact already Registered as Pharmacy";
 					}
 
 					pw.print(msg);
@@ -444,7 +444,7 @@ javax.servlet.Servlet {
 
 					if(i==1)
 					{
-						msg="This Email already Registered as Doctor";
+						msg=userName+" Email already Registered as Doctor";
 					}
 
 					pw.print(msg);
@@ -464,7 +464,7 @@ javax.servlet.Servlet {
 					int i = service.checkEmailPatient(userName);
 					if(i==1)
 					{
-						msg="This Email already Registered as Patient";
+						msg=userName+" Email already Registered as Patient";
 					}
 
 					pw.print(msg);
@@ -482,7 +482,7 @@ javax.servlet.Servlet {
 					int i = service.checkEmailPharmacy(userName);
 					if(i==1)
 					{
-						msg="This Email already Registered as Pharmacy";
+						msg=userName+" Email already Registered as Pharmacy";
 					}
 
 					pw.print(msg);
